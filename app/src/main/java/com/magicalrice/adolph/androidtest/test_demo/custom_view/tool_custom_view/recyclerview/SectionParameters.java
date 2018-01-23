@@ -69,5 +69,40 @@ public class SectionParameters {
             this.loadingResourceId = loadingResourceId;
             return this;
         }
+
+        /**
+         * Set layout resource for Section's failed state
+         *
+         * @param failedResourceId layout resource for Section's failed state
+         * @return this builder
+         */
+        public Builder failedResourceId(@LayoutRes int failedResourceId) {
+            this.failedResourceId = failedResourceId;
+            return this;
+        }
+
+        /**
+         * Set layout resource for Section's empty state
+         *
+         * @param emptyResourceId layout resource for Section's empty state
+         * @return this builder
+         */
+        public Builder emptyResourceId(@LayoutRes int emptyResourceId) {
+            this.emptyResourceId = emptyResourceId;
+            return this;
+        }
+
+        public SectionParameters build() {
+            return new SectionParameters(this);
+        }
+    }
+
+    private SectionParameters(Builder builder) {
+        this.headerResourceId = builder.headerResourceId;
+        this.footerResourceId = builder.footerResourceId;
+        this.itemResourceId = builder.itemResourceId;
+        this.loadingResourceId = builder.loadingResourceId;
+        this.failedResourceId = builder.failedResourceId;
+        this.emptyResourceId = builder.emptyResourceId;
     }
 }

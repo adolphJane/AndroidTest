@@ -13,16 +13,16 @@ public class Section {
     }
 
     private State state = State.LOADED;
-    boolean visible = true;
-    boolean hasHeader = false;
-    boolean hasFolder = false;
+    private boolean visible = true;
+    private boolean hasHeader = false;
+    private boolean hasFooter = false;
 
     @LayoutRes
-    Integer headerResourceId;
+    private Integer headerResourceId;
     @LayoutRes
-    Integer footerResourceId;
+    private Integer footerResourceId;
     @LayoutRes
-    Integer itemResourceId;
+    private Integer itemResourceId;
     @LayoutRes
     private Integer loadingResourceId;
     @LayoutRes
@@ -30,7 +30,15 @@ public class Section {
     @LayoutRes
     private Integer emptyResourceId;
 
-    public Section() {
+    public Section(SectionParameters parameters) {
+        this.headerResourceId = parameters.headerResourceId;
+        this.footerResourceId = parameters.footerResourceId;
+        this.itemResourceId = parameters.itemResourceId;
+        this.loadingResourceId = parameters.loadingResourceId;
+        this.failedResourceId = parameters.failedResourceId;
+        this.emptyResourceId = parameters.emptyResourceId;
 
+        this.hasHeader = this.headerResourceId != null;
+        this.hasFooter = this.footerResourceId != null;
     }
 }
