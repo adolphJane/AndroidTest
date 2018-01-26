@@ -197,6 +197,19 @@ public abstract class Section {
     public final void onBindContentViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (state) {
             case LOADING:
+                onBindLoadingViewHolder(holder);
+                break;
+            case EMPTY:
+                onBindEmptyViewHolder(holder);
+                break;
+            case LOADED:
+                onBindItemViewHolder(holder, position);
+                break;
+            case FAILED:
+                onBindFailedViewHolder(holder);
+                break;
+            default:
+                throw new IllegalStateException("Invalid State");
         }
     }
 
@@ -243,7 +256,7 @@ public abstract class Section {
      * @return ViewHolder for the Header of this Section
      */
     public RecyclerView.ViewHolder getHeaderViewHolder(View view) {
-        return new SectionedRecyclerViewAdapter;
+        return new SectionedRecyclerViewAdapter.EmptyViewHolder(view);
     }
 
     /**
@@ -262,7 +275,7 @@ public abstract class Section {
      * @return ViewHolder for the Footer of this Section
      */
     public RecyclerView.ViewHolder getFooterViewHolder(View view) {
-        return new SectionedRecyclerViewAdapter();
+        return new SectionedRecyclerViewAdapter.EmptyViewHolder(view);
     }
 
     /**
@@ -297,7 +310,7 @@ public abstract class Section {
      * @return ViewHolder for the Loading state of this Section
      */
     public RecyclerView.ViewHolder getLoadingViewHolder(View view) {
-        return new SectionedRecyclerViewAdapter();
+        return new SectionedRecyclerViewAdapter.EmptyViewHolder(view);
     }
 
     /**
@@ -316,7 +329,7 @@ public abstract class Section {
      * @return ViewHolder for the Failed of this Section
      */
     public RecyclerView.ViewHolder getFailedViewHolder(View view) {
-        return new SectionedRecyclerViewAdapter();
+        return new SectionedRecyclerViewAdapter.EmptyViewHolder(view);
     }
 
     /**
@@ -335,7 +348,7 @@ public abstract class Section {
      * @return ViewHolder for the Empty of this Section
      */
     public RecyclerView.ViewHolder getEmptyViewHolder(View view) {
-        return new SectionedRecyclerViewAdapter();
+        return new SectionedRecyclerViewAdapter.EmptyViewHolder(view);
     }
 
     /**
