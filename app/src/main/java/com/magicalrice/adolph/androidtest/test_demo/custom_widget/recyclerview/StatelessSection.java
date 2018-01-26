@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.androidtest.test_demo.custom_view.tool_custom_view.recyclerview;
+package com.magicalrice.adolph.androidtest.test_demo.custom_widget.recyclerview;
 
 /**
  * Created by Adolph on 2018/1/26.
