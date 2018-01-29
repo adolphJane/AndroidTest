@@ -21,10 +21,14 @@ import java.lang.reflect.Field;
 public class MagicalFloatingDragView implements View.OnTouchListener {
 
     private Activity mActivity;
+    //the view which can drag
     private View mDragView;
+    //Builder model
     private Builder mBuilder;
+    //the height of status and screen,the width of screen
     private int mStatusBarHeight, mScreenHeight, mScreenWidth;
     private int mStartX, mStartY, mLastX, mLastY;
+    //whether consume the event of click
     private boolean mTouchResult = false;
 
     public static MagicalFloatingDragView addView(Builder builder) {
@@ -54,6 +58,9 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
         }
     }
 
+    /**
+     * Initialize the DragView
+     */
     public void initDragView() {
         if (mActivity == null)
             throw new NullPointerException("This activity is null");

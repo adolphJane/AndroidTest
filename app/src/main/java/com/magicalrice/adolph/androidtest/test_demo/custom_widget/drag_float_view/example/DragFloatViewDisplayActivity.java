@@ -3,7 +3,6 @@ package com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_vi
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
