@@ -3,14 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/test_demo_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <Button
-        android:id="@+id/hello"
+        android:id="@+id/btn_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="toDragView" />
+        android:text="ShowExample"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true" />
+
 </RelativeLayout>

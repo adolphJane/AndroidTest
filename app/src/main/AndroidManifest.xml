@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".test_demo.custom_widget.drag_float_view.example.DragFloatViewDisplayActivity" />
     </application>
 
 </manifest>

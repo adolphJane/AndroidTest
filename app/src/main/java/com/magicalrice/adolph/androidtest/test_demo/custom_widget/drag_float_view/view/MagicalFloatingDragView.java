@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_view;
+package com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_view.view;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -27,11 +27,16 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
     private int mStartX, mStartY, mLastX, mLastY;
     private boolean mTouchResult = false;
 
-    private MagicalFloatingDragView(Builder builder, View view) {
-        mActivity = builder.activity;
-        mDragView = view;
-        mBuilder = builder;
+    public static MagicalFloatingDragView addView(Builder builder) {
+        MagicalFloatingDragView dragView = new MagicalFloatingDragView(builder);
+        return dragView;
+    }
 
+    private MagicalFloatingDragView(Builder builder) {
+        mActivity = builder.activity;
+        mDragView = builder.view;
+        mBuilder = builder;
+        initDragView();
     }
 
     public View getDragView() {
@@ -45,7 +50,7 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
     public void setNeedNearEdge(boolean needNearEdge) {
         mBuilder.needNearEdge = needNearEdge;
         if (mBuilder.needNearEdge) {
-
+            moveNearEdge();
         }
     }
 
@@ -79,8 +84,12 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
             }
         }
         int left = mBuilder.needNearEdge ? 0 : mBuilder.defaultLeft;
-//        FrameLayout.LayoutParams params =
+        FrameLayout.LayoutParams params = createLayoutParams(left, mStatusBarHeight + mBuilder.defaultTop, 0, 0);
+        FrameLayout root = (FrameLayout) mActivity.getWindow().getDecorView();
+        root.addView(mDragView, params);
+        mDragView.setOnTouchListener(this);
     }
+
 
     private void moveNearEdge() {
         int left = mDragView.getLeft();
@@ -97,13 +106,60 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
+                int left = (int) animation.getAnimatedValue();
+                mDragView.setLayoutParams(createLayoutParams(left, mDragView.getTop(), 0, 0));
             }
         });
+        animator.start();
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        return false;
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mTouchResult = false;
+                mStartX = mLastX = (int) event.getRawX();
+                mStartY = mLastY = (int) event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int left, top, right, bottom;
+                int dx = (int) (event.getRawX() - mLastX);
+                int dy = (int) (event.getRawY() - mLastY);
+                left = v.getLeft() + dx;
+                if (left < 0) {
+                    left = 0;
+                }
+                right = left + v.getWidth();
+                if (right > mScreenWidth) {
+                    right = mScreenWidth;
+                    left = mScreenWidth - v.getWidth();
+                }
+                top = v.getTop() + dy;
+                if (top < mStatusBarHeight + 2) {
+                    top = mStatusBarHeight + 2;
+                }
+                bottom = top + v.getHeight();
+                if (bottom > mScreenHeight) {
+                    bottom = mScreenHeight;
+                    top = bottom - v.getHeight();
+                }
+                v.layout(left, top, right, bottom);
+                mLastX = (int) event.getRawX();
+                mLastY = (int) event.getRawY();
+                break;
+            case MotionEvent.ACTION_UP:
+                v.setLayoutParams(createLayoutParams(v.getLeft(), v.getTop(), 0, 0));
+                float endX = event.getRawX();
+                float endY = event.getRawY();
+                if (Math.abs(endX - mStartX) > 5 || Math.abs(endY - mStartY) > 5) {
+                    mTouchResult = true;
+                }
+                if (mTouchResult && mBuilder.needNearEdge) {
+                    moveNearEdge();
+                }
+                break;
+        }
+        return mTouchResult;
     }
 
     private FrameLayout.LayoutParams createLayoutParams(int left, int top, int right, int bottom) {
@@ -118,6 +174,7 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
         private int defaultTop = 0;
         private int defaultLeft = 0;
         private boolean needNearEdge = false;
+        private View view;
 
         public Builder setActivity(Activity activity) {
             this.activity = activity;
@@ -141,6 +198,11 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
 
         public Builder setNeedNearEdge(boolean needNearEdge) {
             this.needNearEdge = needNearEdge;
+            return this;
+        }
+
+        public Builder setView(View view) {
+            this.view = view;
             return this;
         }
     }
