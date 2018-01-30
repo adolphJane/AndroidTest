@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SectionedRecyclerViewAdapter adapter;
+    private TestAdapter adapter;
     private RecyclerView mActivityList;
     private List<Class<?>> activityDemos;
     @Override
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         mActivityList = findViewById(R.id.test_demo_list);
         activityDemos = new ArrayList<>();
-        adapter = new SectionedRecyclerViewAdapter();
+        adapter = new TestAdapter();
         mActivityList.setAdapter(adapter);
         activityDemos.add(DragFloatViewDisplayActivity.class);
     }
