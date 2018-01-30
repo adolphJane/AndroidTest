@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.androidtest.test_demo.custom_widget.recyclerview;
+package com.magicalrice.adolph.androidtest.test_demo.custom_widget.recyclerview.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.magicalrice.adolph.androidtest.test_demo.custom_widget.recyclerview.Section;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

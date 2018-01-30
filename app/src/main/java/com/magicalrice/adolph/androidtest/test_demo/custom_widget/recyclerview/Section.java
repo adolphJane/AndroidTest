@@ -4,6 +4,8 @@ import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.magicalrice.adolph.androidtest.test_demo.custom_widget.recyclerview.adapter.SectionedRecyclerViewAdapter;
+
 /**
  * Created by Adolph on 2018/1/18.
  */
