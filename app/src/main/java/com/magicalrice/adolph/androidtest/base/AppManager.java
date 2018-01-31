@@ -25,7 +25,7 @@ public class AppManager {
         if (activityStack == null) {
             activityStack = new Stack<>();
         }
-        activityStack.add(activity);
+        activityStack.push(activity);
     }
 
     public Activity getTopActivity() {
@@ -34,17 +34,9 @@ public class AppManager {
 
     public void finishTopActivity() {
         Activity activity = activityStack.lastElement();
-        finishActivity(activity.getClass());
-    }
-
-    public void finishActivity(Class<?> cls) {
-        Iterator iterator = activityStack.iterator();
-        while (iterator.hasNext()) {
-            Activity activity = (Activity) iterator.next();
-            if (activity.getClass().equals(cls)) {
-                activity.finish();
-                iterator.remove();
-            }
+        if (activity != null) {
+            activityStack.remove(activity);
+            activity.finish();
         }
     }
 
@@ -55,13 +47,15 @@ public class AppManager {
     }
 
     public void finishAllActivity() {
-        for (int i = 0, size = activityStack.size(); i < size; i++) {
+        for (int i = 0; i < activityStack.size(); i++) {
             if (null != activityStack.get(i)) {
-                activityStack.get(i).finish();
+                Activity activity = activityStack.pop();
+                activity.finish();
             }
         }
         activityStack.clear();
     }
+
 
     public void exitApp() {
         try {
