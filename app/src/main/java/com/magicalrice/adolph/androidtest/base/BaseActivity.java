@@ -1,10 +1,12 @@
 package com.magicalrice.adolph.androidtest.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -24,7 +26,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     private long mLastClickTime;
     //the interval between twice click
     public static final int CLICK_TIME = 500;
-    private long exitTime = 0;
+
+    protected Toolbar toolbar;
+
     private Fragment currentFragment;
 
 
@@ -36,28 +40,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         AppManager.getInstance().addActivity(this);
         //initialize the ui
         initUI();
+        //initialize the toolbar
+        initToolbar();
         //initialize the data
         initData();
         //initialize the listener
         initListener();
     }
 
-    protected void initToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            handleToolbar();
-        }
-    }
-
     protected abstract int getContentViewId();
+
+    protected void initToolbar() {
+        toolbar = findViewById(R.id.tool_bar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+    }
 
     protected abstract void initUI();
 
     protected abstract void initData();
 
     protected abstract void initListener();
+
+    protected abstract String getDemoName();
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -103,24 +108,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract void setBase();
-
-    protected void handleToolbar() {
-
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (System.currentTimeMillis() - exitTime > 2000) {
-                Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
-                exitTime = System.currentTimeMillis();
-            } else {
-                AppManager.getInstance().exitApp();
-            }
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     protected void onDestroy() {
