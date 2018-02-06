@@ -12,20 +12,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.magicalrice.adolph.androidtest.base.AppManager;
-import com.magicalrice.adolph.androidtest.base.BaseActivity;
+import com.magicalrice.adolph.androidtest.base_core.AppManager;
+import com.magicalrice.adolph.androidtest.base_core.BaseActivity;
 import com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_view.example.DragFloatViewDisplayActivity;
 import com.magicalrice.adolph.androidtest.test_demo.library_study_demo.appbarlayout_collapsingtoolbarlayout_coordinatorlayout.AppbarLayoutCoordinatorLayoutExampleActivity;
 

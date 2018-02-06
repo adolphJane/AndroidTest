@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.androidtest.base;
+package com.magicalrice.adolph.androidtest.base_core;
 
 import android.app.Application;
 
@@ -15,6 +15,7 @@ import com.tencent.smtt.sdk.QbSdk;
 
 public class TestDemoApplication extends Application {
 
+    private static TestDemoApplication instance;
 
     @Override
     public void onCreate() {
@@ -55,4 +56,10 @@ public class TestDemoApplication extends Application {
         QbSdk.initX5Environment(getApplicationContext(), callback);
     }
 
+    public static TestDemoApplication getInstance() {
+        if (instance == null) {
+            instance = new TestDemoApplication();
+        }
+        return instance;
+    }
 }

@@ -1,6 +1,5 @@
-package com.magicalrice.adolph.androidtest.base;
+package com.magicalrice.adolph.androidtest.base_core;
 
-import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.magicalrice.adolph.androidtest.R;

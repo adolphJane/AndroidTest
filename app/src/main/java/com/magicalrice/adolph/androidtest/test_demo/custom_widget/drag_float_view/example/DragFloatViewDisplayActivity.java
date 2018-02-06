@@ -3,14 +3,12 @@ package com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_vi
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.magicalrice.adolph.androidtest.R;
-import com.magicalrice.adolph.androidtest.base.BaseActivity;
+import com.magicalrice.adolph.androidtest.base_core.BaseActivity;
 import com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_view.view.MagicalFloatingDragView;
 import com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_view.view.MagicalFloatingDragView.Builder;
 

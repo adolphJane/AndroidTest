@@ -5,10 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 
 import com.magicalrice.adolph.androidtest.R;
-import com.magicalrice.adolph.androidtest.base.BaseActivity;
+import com.magicalrice.adolph.androidtest.base_core.BaseActivity;
 
 /**
  * Created by Adolph on 2018/2/2.
