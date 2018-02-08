@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.androidtest.base_core;
+package com.magicalrice.adolph.base;
 
 import android.app.Activity;
 

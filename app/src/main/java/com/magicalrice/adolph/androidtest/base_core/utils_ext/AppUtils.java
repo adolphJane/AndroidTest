@@ -1,6 +1,5 @@
 package com.magicalrice.adolph.androidtest.base_core.utils_ext;
 
-import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 
 import com.magicalrice.adolph.androidtest.base_core.TestDemoApplication;
 import com.magicalrice.adolph.androidtest.base_core.bean.AppInfo;

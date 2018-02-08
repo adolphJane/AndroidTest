@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.androidtest.base_core;
+package com.magicalrice.adolph.base;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-
-import com.magicalrice.adolph.androidtest.R;
 
 /**
  * Created by Adolph on 2018/1/30.
@@ -49,9 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getContentViewId();
 
     protected void initToolbar() {
-        toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
+
     }
 
     protected abstract void initUI();

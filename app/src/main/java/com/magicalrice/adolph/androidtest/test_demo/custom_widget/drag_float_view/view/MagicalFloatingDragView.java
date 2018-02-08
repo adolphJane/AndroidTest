@@ -110,12 +110,9 @@ public class MagicalFloatingDragView implements View.OnTouchListener {
         animator.setDuration(1000);
         animator.setRepeatCount(0);
         animator.setInterpolator(new BounceInterpolator());
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int left = (int) animation.getAnimatedValue();
-                mDragView.setLayoutParams(createLayoutParams(left, mDragView.getTop(), 0, 0));
-            }
+        animator.addUpdateListener(animation -> {
+                int leftV = (int) animation.getAnimatedValue();
+                mDragView.setLayoutParams(createLayoutParams(leftV, mDragView.getTop(), 0, 0));
         });
         animator.start();
     }

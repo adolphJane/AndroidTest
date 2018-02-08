@@ -29,7 +29,7 @@ public abstract class BaseMagicalAdapter<D, T extends RecyclerView.ViewHolder> e
     private RecyclerView mRecyclerView;
 
     public BaseMagicalAdapter(@LayoutRes int layoutResId, @Nullable List<D> data) {
-        this.mData = data == null ? new ArrayList<D>() : data;
+        this.mData = data == null ? new ArrayList<>() : data;
         if (layoutResId != 0) {
         }
     }

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AndroidTest</string>
+    <string name="common_base">CommonBase</string>
+    <string name="custom_view">CustomView</string>
+    <string name="custom_animation">CustomAnimation</string>
+</resources>

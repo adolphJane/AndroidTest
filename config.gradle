@@ -1,0 +1,18 @@
+ext {
+    android = [
+            compileSdkVersion : 27,
+            targetSdkVersion : 27,
+            minSdkVersion : 16,
+            buildToolsVersion : '27.0.2',
+            applicationId : 'com.magicalrice.adolph.androidtest',
+            versionCode : 1,
+            versionName : "1.0",
+    ]
+
+    dependencies = [
+            "junit" : 'junit:junit:4.12',
+            "runner" : 'com.android.support.test:runner:1.0.1',
+            "espresso" : 'com.android.support.test.espresso:espresso-core:3.0.1',
+            "constraint" : 'com.android.support.constraint:constraint-layout:1.0.2',
+    ]
+}

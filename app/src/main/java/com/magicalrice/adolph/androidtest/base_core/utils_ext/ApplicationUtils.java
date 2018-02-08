@@ -77,7 +77,7 @@ public class ApplicationUtils {
 
     private static void setTopActivityWeakRef(Activity activity) {
         if (mTopActivityWeakRef == null || !activity.equals(mTopActivityWeakRef.get())) {
-            mTopActivityWeakRef = new WeakReference<Activity>(activity);
+            mTopActivityWeakRef = new WeakReference<>(activity);
         }
     }
 }

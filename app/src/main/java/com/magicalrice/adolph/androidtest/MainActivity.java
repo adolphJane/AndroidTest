@@ -20,10 +20,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.magicalrice.adolph.androidtest.base_core.AppManager;
-import com.magicalrice.adolph.androidtest.base_core.BaseActivity;
 import com.magicalrice.adolph.androidtest.test_demo.custom_widget.drag_float_view.example.DragFloatViewDisplayActivity;
 import com.magicalrice.adolph.androidtest.test_demo.library_study_demo.appbarlayout_collapsingtoolbarlayout_coordinatorlayout.AppbarLayoutCoordinatorLayoutExampleActivity;
+import com.magicalrice.adolph.base.AppManager;
+import com.magicalrice.adolph.base.BaseActivity;
 
 /**
  * Created by Adolph on 2018/1/18.
