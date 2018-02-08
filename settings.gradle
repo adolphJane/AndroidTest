@@ -1,1 +1,1 @@
-include ':app', ':base', ':custom_view', ':custom_animation'
+include ':app', ':common', ':custom_view', ':custom_animation', ':custom_widget', ':module_main', ':module_library_study'

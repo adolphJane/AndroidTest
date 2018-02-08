@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.magicalrice.adolph.custom_view" >
+    <application
+        android:name="debug.CustomViewApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/custom_animation"
+        android:allowBackup="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+    </application>
+</manifest>

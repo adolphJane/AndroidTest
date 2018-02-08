@@ -1,12 +1,12 @@
 package debug;
 
-import android.app.Application;
+import com.magicalrice.adolph.common.base.BaseApplication;
 
 /**
  * Created by Adolph on 2018/2/7.
  */
 
-public class CustomAnimationApplication extends Application {
+public class CustomAnimationApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();

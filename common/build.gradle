@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    resourcePrefix "common_"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    //kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    //test
+    testApi rootProject.ext.dependencies["junit"]
+    androidTestApi rootProject.ext.dependencies["runner"]
+    androidTestApi rootProject.ext.dependencies["espresso"]
+    //google
+    api rootProject.ext.dependencies["constraint"]
+    api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:design:$rootProject.supportLibraryVersion"
+    //log
+    api "com.orhanobut:logger:$rootProject.loggerVersion"
+    //webview
+    api files('libs/x5_withfilereader.jar')
+    //router
+    api "com.alibaba:arouter-api:$rootProject.arouterVersion"
+}

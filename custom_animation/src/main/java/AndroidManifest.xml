@@ -5,6 +5,7 @@
         android:name="debug.CustomAnimationApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/custom_animation"
+        android:allowBackup="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
     </application>
