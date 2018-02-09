@@ -2,6 +2,7 @@
     package="com.magicalrice.adolph.common" >
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application>
 

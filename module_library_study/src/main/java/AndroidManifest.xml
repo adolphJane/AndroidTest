@@ -2,7 +2,8 @@
     package="com.magicalrice.adolph.module_library_study" >
     <application
         android:name="debug.LibraryStudyApplication"
-        android:icon="@mipmap/co_ic_launcher"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:allowBackup="true"
         android:label="@string/co_library_study"
         android:theme="@style/Theme.AppCompat.NoActionBar">

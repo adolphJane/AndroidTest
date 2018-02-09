@@ -13,6 +13,7 @@ public class RouterTable {
 
     //Widget
     public static String ITEM_WIDGET_DRAGFLOAT = GROUP_WIDGET + "/dragfloat";
+    public static String ITEM_WIDGET_NOTIFICATION = GROUP_WIDGET + "/notification";
     //View
     //Animation
     //LibraryStudy

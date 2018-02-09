@@ -3,7 +3,8 @@
     package="com.magicalrice.adolph.custom_animation" >
     <application
         android:name="debug.CustomAnimationApplication"
-        android:icon="@mipmap/co_ic_launcher"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/co_custom_animation"
         android:allowBackup="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">

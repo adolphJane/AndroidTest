@@ -2,5 +2,6 @@
     package="com.magicalrice.adolph.custom_widget" >
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity"/>
+        <activity android:name=".notification.NotificationActivity"/>
     </application>
 </manifest>

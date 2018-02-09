@@ -22,12 +22,6 @@ public class DragFloatViewDisplayActivity extends BaseActivity {
     private RelativeLayout rl_view;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ViewCompat.setTransitionName(rl_view, "card");
-    }
-
-    @Override
     protected void initToolbar() {
         super.initToolbar();
     }
@@ -40,9 +34,10 @@ public class DragFloatViewDisplayActivity extends BaseActivity {
     @Override
     protected void initUI() {
         rl_view = findViewById(R.id.rl_view);
+        ViewCompat.setTransitionName(rl_view, "card");
         ImageView img = new ImageView(this);
         img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        img.setImageResource(R.mipmap.co_ic_launcher_round);
+        img.setImageResource(R.mipmap.ic_launcher_round);
         img.setOnClickListener(v -> Toast.makeText(DragFloatViewDisplayActivity.this, "点击了...", Toast.LENGTH_SHORT).show());
 
         MagicalFloatingDragView.addView(new Builder()

@@ -2,7 +2,8 @@
     package="com.magicalrice.adolph.custom_view" >
     <application
         android:name="debug.CustomViewApplication"
-        android:icon="@mipmap/co_ic_launcher"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/co_custom_view"
         android:allowBackup="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">

@@ -2,11 +2,15 @@
     package="com.magicalrice.adolph.custom_widget" >
     <application
         android:name="debug.CustomWidgetApplication"
-        android:icon="@mipmap/co_ic_launcher"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:allowBackup="true"
         android:label="@string/co_custom_widget"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity">
+
+        </activity>
+        <activity android:name=".notification.NotificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
