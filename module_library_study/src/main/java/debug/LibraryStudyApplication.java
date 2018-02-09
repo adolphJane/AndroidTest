@@ -1,10 +1,10 @@
 package debug;
 
-import android.app.Application;
+import com.magicalrice.adolph.common.base.BaseApplication;
 
 /**
  * Created by Adolph on 2018/2/8.
  */
 
-public class LibraryStudyApplication extends Application {
+public class LibraryStudyApplication extends BaseApplication{
 }

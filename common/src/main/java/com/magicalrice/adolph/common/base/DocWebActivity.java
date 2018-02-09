@@ -16,7 +16,7 @@ public class DocWebActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_doc_web;
+        return R.layout.co_activity_doc_web;
     }
 
     @Override

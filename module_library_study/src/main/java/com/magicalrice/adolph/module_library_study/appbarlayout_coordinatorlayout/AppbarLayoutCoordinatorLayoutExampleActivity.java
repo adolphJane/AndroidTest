@@ -34,7 +34,7 @@ public class AppbarLayoutCoordinatorLayoutExampleActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_appbarlayout_coordinatorlayout;
+        return R.layout.ls_activity_appbarlayout_coordinatorlayout;
     }
 
     @Override

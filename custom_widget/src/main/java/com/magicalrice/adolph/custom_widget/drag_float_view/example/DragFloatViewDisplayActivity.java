@@ -34,7 +34,7 @@ public class DragFloatViewDisplayActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_custom_widget_drag_floating_view;
+        return R.layout.cw_activity_drag_floating_view;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DragFloatViewDisplayActivity extends BaseActivity {
         rl_view = findViewById(R.id.rl_view);
         ImageView img = new ImageView(this);
         img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        img.setImageResource(R.mipmap.ic_launcher_round);
+        img.setImageResource(R.mipmap.co_ic_launcher_round);
         img.setOnClickListener(v -> Toast.makeText(DragFloatViewDisplayActivity.this, "点击了...", Toast.LENGTH_SHORT).show());
 
         MagicalFloatingDragView.addView(new Builder()

@@ -1,11 +1,9 @@
 package com.magicalrice.adolph.module_main;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,14 +18,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.magicalrice.adolph.common.base.AppManager;
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.common.base.RouterTable;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Adolph on 2018/1/18.
@@ -62,7 +58,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_main;
+        return R.layout.main_activity;
     }
 
     @Override
@@ -106,7 +102,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder> {
         @Override
         public TestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getLayoutInflater().inflate(R.layout.item_recycler_main, parent, false);
+            View view = getLayoutInflater().inflate(R.layout.main_item_recycler, parent, false);
             TestViewHolder holder = new TestViewHolder(view);
             return holder;
         }
@@ -116,7 +112,27 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             holder.tv_demo.setText(titles[position]);
             holder.ll_demo.setOnClickListener(v -> {
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, v, "card");
-                ARouter.getInstance().build(routers[position]).withOptionsCompat(options).navigation();
+                ARouter.getInstance().build(routers[position]).withOptionsCompat(options).navigation(MainActivity.this, new NavigationCallback() {
+                    @Override
+                    public void onFound(Postcard postcard) {
+                        showShortToast("发现目标Activity");
+                    }
+
+                    @Override
+                    public void onLost(Postcard postcard) {
+                        showShortToast("没有目标Activity");
+                    }
+
+                    @Override
+                    public void onArrival(Postcard postcard) {
+                        showShortToast("跳转完成");
+                    }
+
+                    @Override
+                    public void onInterrupt(Postcard postcard) {
+                        showShortToast("已被拦截");
+                    }
+                });
             });
         }
 

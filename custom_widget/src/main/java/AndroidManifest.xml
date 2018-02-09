@@ -2,9 +2,9 @@
     package="com.magicalrice.adolph.custom_widget" >
     <application
         android:name="debug.CustomWidgetApplication"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/co_ic_launcher"
         android:allowBackup="true"
-        android:label="@string/custom_animation"
+        android:label="@string/co_custom_widget"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity">
             <intent-filter>

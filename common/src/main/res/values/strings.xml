@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">AndroidTest</string>
-    <string name="common_base">CommonBase</string>
-    <string name="custom_view">CustomView</string>
-    <string name="custom_animation">CustomAnimation</string>
+    <string name="co_app_name">AndroidTest</string>
+    <string name="co_base">底层组件</string>
+    <string name="co_custom_view">自定义视图</string>
+    <string name="co_custom_animation">自定义动画</string>
+    <string name="co_custom_widget">自定义控件</string>
+    <string name="co_library_study">第三方库学习</string>
+    <string name="co_main">Main组件</string>
+
 </resources>

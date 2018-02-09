@@ -22,7 +22,7 @@ android {
         }
     }
 
-    resourcePrefix "common_"
+    resourcePrefix "co_"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
