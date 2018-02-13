@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.magicalrice.adolph.module_game" >
+    <application android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".snake.SnakeActivity"/>
+    </application>
+</manifest>

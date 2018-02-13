@@ -131,14 +131,14 @@ public final class ShellUtils {
 
     public static class CommandResult {
         //返回的命令结果
-        private int restult;
+        public int result;
         //成功信息
-        private String successMsg;
+        public String successMsg;
         //错误信息
-        private String errorMsg;
+        public String errorMsg;
 
         public CommandResult(final int result, final String successMsg, final String errorMsg) {
-            this.restult = result;
+            this.result = result;
             this.successMsg = successMsg;
             this.errorMsg = errorMsg;
         }

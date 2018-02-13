@@ -1,1 +1,1 @@
-include ':app', ':common', ':custom_view', ':custom_animation', ':custom_widget', ':module_main', ':module_library_study'
+include ':app', ':common', ':custom_view', ':custom_animation', ':custom_widget', ':module_main', ':module_library_study', ':module_game'

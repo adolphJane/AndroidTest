@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Adolph on 2018/2/5.
  */
 
-public class ApplicationUtils {
+public final class ApplicationUtils {
     @SuppressLint("StaticFieldLeak")
     private static BaseApplication mApp;
 
