@@ -62,11 +62,11 @@ dependencies {
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     //test
-    testApi rootProject.ext.dependencies["junit"]
-    androidTestApi rootProject.ext.dependencies["runner"]
-    androidTestApi rootProject.ext.dependencies["espresso"]
+    testApi rootProject.ext.dependencies.junit
+    androidTestApi rootProject.ext.dependencies.runner
+    androidTestApi rootProject.ext.dependencies.espresso
     //google
-    api rootProject.ext.dependencies["constraint"]
+    api rootProject.ext.dependencies.constraint
     api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
