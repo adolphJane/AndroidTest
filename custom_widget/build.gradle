@@ -53,5 +53,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
-    implementation project(':common')
+    api project(':common')
 }

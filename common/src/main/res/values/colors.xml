@@ -6,4 +6,5 @@
 
     <color name="co_black1">#99000000</color>
     <color name="co_white1">#FFFFFFFF</color>
+    <color name="co_transparent">#00000000</color>
 </resources>

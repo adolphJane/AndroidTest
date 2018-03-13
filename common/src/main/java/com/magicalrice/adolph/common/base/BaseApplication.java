@@ -1,7 +1,6 @@
 package com.magicalrice.adolph.common.base;
 
 import android.app.Application;
-import android.os.Build;
 
 import com.letv.sarrsdesktop.blockcanaryex.jrt.BlockCanaryEx;
 import com.letv.sarrsdesktop.blockcanaryex.jrt.Config;
