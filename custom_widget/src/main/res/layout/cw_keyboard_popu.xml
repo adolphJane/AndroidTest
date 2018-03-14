@@ -60,7 +60,7 @@
                 android:keyTextColor="#ffffff"
                 android:keyPreviewLayout="@null"
                 android:background="#7d7d7d"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
 
             <com.magicalrice.adolph.custom_widget.keyboard.view.CustomKeyboardView
                 android:id="@+id/keyboard_view2"
@@ -74,7 +74,7 @@
                 android:background="#7d7d7d"
                 android:keyPreviewOffset="45dp"
                 android:keyPreviewHeight="90dp"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
         </FrameLayout>
     </LinearLayout>
 

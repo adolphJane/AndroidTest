@@ -73,8 +73,6 @@ dependencies {
     api "com.android.support:design:$rootProject.supportLibraryVersion"
     //log
     api "com.orhanobut:logger:$rootProject.loggerVersion"
-    //webview
-    api files('libs/x5_withfilereader.jar')
     //router
     api "com.alibaba:arouter-api:$rootProject.arouterVersion"
     //LeakCanary

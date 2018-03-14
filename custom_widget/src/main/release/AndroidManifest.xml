@@ -3,5 +3,14 @@
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity"/>
         <activity android:name=".notification.NotificationActivity"/>
+        <activity android:name=".keyboard.example.KeyboardActivity"/>
+        <receiver android:name=".notification.NotificationBroadcast"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="play"/>
+                <action android:name="pause"/>
+                <action android:name="next"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

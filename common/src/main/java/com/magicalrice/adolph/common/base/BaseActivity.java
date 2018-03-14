@@ -25,6 +25,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     //the interval between twice click
     public static final int CLICK_TIME = 500;
 
+    private boolean isShowToolbar = false;
+
     protected Toolbar toolbar;
 
     private Fragment currentFragment;
@@ -39,7 +41,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         //initialize the ui
         initUI();
         //initialize the toolbar
-        initToolbar();
+        if (isShowToolbar) {
+            initToolbar();
+        }
         //initialize the data
         initData();
         //initialize the listener
@@ -49,9 +53,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getContentViewId();
 
     protected void initToolbar(){
-        toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
+        try {
+            toolbar = findViewById(R.id.tool_bar);
+            toolbar.setTitleTextColor(Color.WHITE);
+            setSupportActionBar(toolbar);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            isShowToolbar = false;
+        }
     }
 
     protected abstract void initUI();
@@ -95,6 +104,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    public boolean isShowToolbar() {
+        return isShowToolbar;
+    }
+
+    public void setShowToolbar(boolean showToolbar) {
+        isShowToolbar = showToolbar;
     }
 
     protected String getStringMethod(int mStringRid) {

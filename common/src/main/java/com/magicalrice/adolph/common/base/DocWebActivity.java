@@ -1,9 +1,9 @@
 package com.magicalrice.adolph.common.base;
 
+import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
 import com.magicalrice.adolph.common.R;
-import com.tencent.smtt.sdk.WebView;
 
 /**
  * Created by Adolph on 2018/2/2.

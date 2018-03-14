@@ -67,7 +67,7 @@ public class KeyboardDialogUtils implements View.OnClickListener {
 
     private void initView() {
         try {
-            if (keyboardView != null) {
+            if (keyboardView == null) {
                 keyboardView = new BaseKeyboardView(mContext,view);
             }
         } catch (Exception e) {
@@ -108,6 +108,7 @@ public class KeyboardDialogUtils implements View.OnClickListener {
         editText.setFocusable(true);
         editText.setFocusableInTouchMode(true);
         editText.requestFocus();
+        hideSystemSoftKeyboard(editText);
         popWindow.show();
         keyboardView.showKeyboard(editText);
     }

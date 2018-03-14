@@ -14,7 +14,6 @@ import com.orhanobut.logger.PrettyFormatStrategy;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy;
-import com.tencent.smtt.sdk.QbSdk;
 
 /**
  * Created by Adolph on 2018/1/30.
@@ -27,7 +26,6 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         initLogger();
-        initX5WebKit();
         initLeakCanary();
         initBlockcCanary();
         initBugly();
@@ -46,21 +44,6 @@ public class BaseApplication extends Application {
                 return true;
             }
         });
-    }
-
-    private void initX5WebKit() {
-        QbSdk.PreInitCallback callback = new QbSdk.PreInitCallback() {
-            @Override
-            public void onCoreInitFinished() {
-            }
-
-            @Override
-            public void onViewInitFinished(boolean b) {
-                Logger.e("App", "onViewInitFinished is " + b);
-            }
-        };
-
-        QbSdk.initX5Environment(getApplicationContext(), callback);
     }
 
     private void initLeakCanary() {

@@ -59,7 +59,7 @@ public class CustomKeyboardView extends KeyboardView {
                     } else {
                         dr.draw(canvas);
                     }
-                } else if (key.codes[0] == -2 || key.codes[0] ==90001) {
+                } else if (key.codes[0] == -2 || key.codes[0] == 90001) {
                     Drawable dr = mContext.getResources().getDrawable(R.drawable.cw_selector_keyboard_bg);
                     dr.setBounds(key.x,key.y,key.x + key.width,key.y + key.height);
                     dr.draw(canvas);

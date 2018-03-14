@@ -257,17 +257,20 @@ public class BaseKeyboardView {
     public void showKeyboard(EditText editText) {
         try {
             this.mEditText = editText;
-            int visibility = 0;
             int inputType = mEditText.getInputType();
             mHeaderView.setVisibility(View.VISIBLE);
             switch (inputType) {
                 case InputType.TYPE_CLASS_NUMBER:
+                    showNumberView();
                     break;
                 case InputType.TYPE_CLASS_PHONE:
+                    showNumberView();
                     break;
                 case InputType.TYPE_NUMBER_FLAG_DECIMAL:
+                    showNumberView();
                     break;
                 default:
+                    showLetterView2();
                     break;
             }
         } catch (Exception e) {

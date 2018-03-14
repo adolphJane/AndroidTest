@@ -10,7 +10,9 @@
         <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity">
 
         </activity>
-        <activity android:name=".notification.NotificationActivity">
+        <activity android:name=".notification.NotificationActivity"/>
+
+        <activity android:name=".keyboard.example.KeyboardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
