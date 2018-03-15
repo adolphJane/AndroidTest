@@ -7,8 +7,8 @@
         </shape>
     </item>
     <item
-        android:left="15dp"
-        android:right="15dp"
+        android:left="48dp"
+        android:right="48dp"
         android:top="15dp"
         android:bottom="15dp"
         android:drawable="@drawable/cw_icon_number_keyboard_del">

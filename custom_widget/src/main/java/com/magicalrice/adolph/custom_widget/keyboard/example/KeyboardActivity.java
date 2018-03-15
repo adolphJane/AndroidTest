@@ -4,7 +4,7 @@ import android.widget.EditText;
 
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.custom_widget.R;
-import com.magicalrice.adolph.custom_widget.keyboard.view.KeyboardDialogUtils;
+import com.magicalrice.adolph.custom_widget.keyboard.view.KeyboardUtils;
 
 /**
  * Created by Adolph on 2018/3/14.
@@ -13,7 +13,7 @@ import com.magicalrice.adolph.custom_widget.keyboard.view.KeyboardDialogUtils;
 public class KeyboardActivity extends BaseActivity {
 
     private EditText text;
-    private KeyboardDialogUtils utils;
+    private KeyboardUtils utils;
 
     @Override
     protected void initToolbar() {
@@ -33,12 +33,12 @@ public class KeyboardActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        utils = new KeyboardDialogUtils(this);
+        utils = new KeyboardUtils(this);
     }
 
     @Override
     protected void initListener() {
-        text.setOnClickListener(v -> utils.show((EditText) v));
+        text.setOnClickListener(v -> utils.attachTo((EditText) v));
     }
 
     @Override

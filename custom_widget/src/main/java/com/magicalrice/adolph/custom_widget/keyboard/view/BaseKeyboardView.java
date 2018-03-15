@@ -13,17 +13,15 @@ import com.magicalrice.adolph.custom_widget.R;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 
 /**
  * Created by Adolph on 2018/3/13.
  */
 
-public class BaseKeyboardView {
+public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
     private Activity mContext;
     private View parentView;
-    private KeyboardView mLetterView;       //字母键盘view
-    private KeyboardView mNumberView;       //数字键盘view
+    private KeyboardView mKeyView;       //数字键盘view
     private Keyboard mNumberKeyboard;       //数字键盘
     private Keyboard mLetterKeyboard;       //字母键盘
     private Keyboard mSymbolKeyboard;       //符号键盘
@@ -45,151 +43,39 @@ public class BaseKeyboardView {
         mNumberKeyboard = new Keyboard(mContext, R.xml.cw_keyboard_numbers);
         mLetterKeyboard = new Keyboard(mContext, R.xml.cw_keyboard_word);
         mSymbolKeyboard = new Keyboard(mContext, R.xml.cw_keyboard_symbol);
-        mNumberView = parentView.findViewById(R.id.keyboard_view);
-        mLetterView = parentView.findViewById(R.id.keyboard_view2);
+        mKeyView = parentView.findViewById(R.id.keyboard_view);
         mHeaderView = parentView.findViewById(R.id.keyboard_header);
 
-        mNumberView.setKeyboard(mNumberKeyboard);
-        mNumberView.setEnabled(true);
-        mNumberView.setPreviewEnabled(false);
-        mNumberView.setOnKeyboardActionListener(listener);
-        mLetterView.setKeyboard(mLetterKeyboard);
-        mLetterView.setEnabled(true);
-        mLetterView.setPreviewEnabled(false);
-        mLetterView.setOnKeyboardActionListener(listener);
+        mKeyView.setKeyboard(mNumberKeyboard);
+        mKeyView.setEnabled(true);
+        mKeyView.setPreviewEnabled(false);
+        mKeyView.setOnKeyboardActionListener(this);
     }
-
-    private KeyboardView.OnKeyboardActionListener listener = new KeyboardView.OnKeyboardActionListener() {
-        @Override
-        public void onPress(int primaryCode) {
-            Logger.d("onPress" + primaryCode);
-            if (primaryCode == Keyboard.KEYCODE_SHIFT) {
-                List<Keyboard.Key> keyList = mLetterKeyboard.getKeys();
-                mLetterView.setPreviewEnabled(false);
-            } else if (primaryCode == Keyboard.KEYCODE_DELETE) {
-                mLetterView.setPreviewEnabled(false);
-            } else if (primaryCode == 32) {
-                mLetterView.setPreviewEnabled(false);
-            } else {
-                mLetterView.setPreviewEnabled(true);
-            }
-        }
-
-        @Override
-        public void onRelease(int primaryCode) {
-            Logger.d("onRelease" + primaryCode);
-        }
-
-        @Override
-        public void onKey(int primaryCode, int[] keyCodes) {
-            Logger.d("onKey" + primaryCode);
-            try {
-                if (mEditText == null)
-                    return;
-                Editable editable = mEditText.getText();
-                int start = mEditText.getSelectionStart();
-                if (primaryCode == Keyboard.KEYCODE_CANCEL) {
-                    hideKeyboard();
-                } else if (primaryCode == Keyboard.KEYCODE_DELETE || primaryCode == -35) {
-                    //回退键，删除字符
-                    if (editable != null && editable.length() > 0) {
-                        if (start > 0) {
-                            editable.delete(start - 1, start);
-                        }
-                    }
-                } else if (primaryCode == Keyboard.KEYCODE_SHIFT) {
-                    //大小写切换
-                    changeKeyboart();
-                    mLetterView.setKeyboard(mLetterKeyboard);
-                } else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE) {
-                    //数字和字母切换
-                    if (isNumber) {
-                        showLetterView();
-                        showLetterView2();
-                    } else {
-                        showNumberView();
-                    }
-                } else if (primaryCode == 90001) {
-                    //字母和字符切换
-                    if (isSymbol) {
-                        showLetterView();
-                    } else {
-                        showSymbolView();
-                    }
-                } else {
-                    //输入键盘值
-                    editable.insert(start,Character.toString((char) primaryCode));
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onText(CharSequence text) {
-
-        }
-
-        @Override
-        public void swipeLeft() {
-
-        }
-
-        @Override
-        public void swipeRight() {
-
-        }
-
-        @Override
-        public void swipeDown() {
-
-        }
-
-        @Override
-        public void swipeUp() {
-
-        }
-    };
 
     //字母-符号，切换显示字母
     private void showLetterView() {
-        if (mLetterView != null) {
+        if (mKeyView != null) {
             isSymbol = false;
-            mLetterView.setKeyboard(mLetterKeyboard);
+            isNumber = false;
+            mKeyView.setKeyboard(mLetterKeyboard);
         }
     }
 
     //字母-符号，切换显示符号
     private void showSymbolView() {
-        if (mLetterView != null) {
+        if (mKeyView != null) {
             isSymbol = true;
-            mLetterView.setKeyboard(mSymbolKeyboard);
-        }
-    }
-
-    //字母-数字，切换显示字母键盘
-    private void showLetterView2() {
-        try {
-            if (mLetterView != null && mNumberView != null) {
-                isNumber = false;
-                mLetterView.setVisibility(View.VISIBLE);
-                mNumberView.setVisibility(View.INVISIBLE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            isNumber = false;
+            mKeyView.setKeyboard(mSymbolKeyboard);
         }
     }
 
     //数字-字母，显示数字键盘
     private void showNumberView() {
-        try {
-            if (mLetterView != null && mNumberView != null) {
-                isNumber = true;
-                mLetterView.setVisibility(View.INVISIBLE);
-                mNumberView.setVisibility(View.VISIBLE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (mKeyView != null) {
+            isNumber = true;
+            isSymbol = false;
+            mKeyView.setKeyboard(mNumberKeyboard);
         }
     }
 
@@ -202,7 +88,6 @@ public class BaseKeyboardView {
             //大写切换小写
             isUpper = false;
             for (Keyboard.Key key : keyList) {
-                Drawable icon = key.icon;
                 if (key.label != null && isLetter(key.label.toString())) {
                     key.label = key.label.toString().toLowerCase();
                     key.codes[0] = key.codes[0] + 32;
@@ -222,6 +107,7 @@ public class BaseKeyboardView {
 
     /**
      * 判断是否是字母
+     *
      * @param str
      * @return
      */
@@ -234,47 +120,118 @@ public class BaseKeyboardView {
      * 隐藏键盘
      */
     public void hideKeyboard() {
-        try {
-            int visibility = mLetterView.getVisibility();
-            if (visibility == View.VISIBLE) {
-                mHeaderView.setVisibility(View.GONE);
-                mLetterView.setVisibility(View.GONE);
-            }
-            visibility = mNumberView.getVisibility();
-            if (visibility == View.VISIBLE) {
-                mHeaderView.setVisibility(View.GONE);
-                mNumberView.setVisibility(View.GONE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (mKeyView != null && mKeyView.getVisibility() == View.VISIBLE) {
+            mHeaderView.setVisibility(View.GONE);
+            mKeyView.setVisibility(View.GONE);
         }
     }
 
     /**
      * 显示键盘
+     *
      * @param editText
      */
     public void showKeyboard(EditText editText) {
-        try {
-            this.mEditText = editText;
-            int inputType = mEditText.getInputType();
-            mHeaderView.setVisibility(View.VISIBLE);
-            switch (inputType) {
-                case InputType.TYPE_CLASS_NUMBER:
-                    showNumberView();
-                    break;
-                case InputType.TYPE_CLASS_PHONE:
-                    showNumberView();
-                    break;
-                case InputType.TYPE_NUMBER_FLAG_DECIMAL:
-                    showNumberView();
-                    break;
-                default:
-                    showLetterView2();
-                    break;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        this.mEditText = editText;
+        int inputType = mEditText.getInputType();
+        mHeaderView.setVisibility(View.VISIBLE);
+        mKeyView.setVisibility(View.VISIBLE);
+        switch (inputType) {
+            case InputType.TYPE_CLASS_NUMBER:
+                showNumberView();
+                break;
+            case InputType.TYPE_CLASS_PHONE:
+                showNumberView();
+                break;
+            case InputType.TYPE_NUMBER_FLAG_DECIMAL:
+                showNumberView();
+                break;
+            default:
+                showLetterView();
+                break;
         }
+    }
+
+    @Override
+    public void onPress(int primaryCode) {
+        Logger.d("onPress" + primaryCode);
+        if (primaryCode == Keyboard.KEYCODE_SHIFT) {
+            mKeyView.setPreviewEnabled(false);
+        } else if (primaryCode == Keyboard.KEYCODE_DELETE) {
+            mKeyView.setPreviewEnabled(false);
+        } else if (primaryCode == 32 || primaryCode == -2 || primaryCode == -35 || primaryCode == 90001 || primaryCode == -5) {
+            mKeyView.setPreviewEnabled(false);
+        } else {
+            mKeyView.setPreviewEnabled(true);
+        }
+    }
+
+    @Override
+    public void onRelease(int primaryCode) {
+
+    }
+
+    @Override
+    public void onKey(int primaryCode, int[] keyCodes) {
+        Logger.d("onKey" + primaryCode);
+        if (mEditText == null)
+            return;
+        Editable editable = mEditText.getText();
+        int start = mEditText.getSelectionStart();
+        if (primaryCode == Keyboard.KEYCODE_CANCEL) {
+            hideKeyboard();
+        } else if (primaryCode == Keyboard.KEYCODE_DELETE || primaryCode == -35) {
+            //回退键，删除字符
+            if (editable != null && editable.length() > 0) {
+                if (start > 0) {
+                    editable.delete(start - 1, start);
+                }
+            }
+        } else if (primaryCode == Keyboard.KEYCODE_SHIFT) {
+            //大小写切换
+            changeKeyboart();
+        } else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE) {
+            //数字和字母切换
+            if (isNumber) {
+                showLetterView();
+            } else {
+                showNumberView();
+            }
+        } else if (primaryCode == 90001) {
+            //字母和字符切换
+            if (isSymbol) {
+                showLetterView();
+            } else {
+                showSymbolView();
+            }
+        } else {
+            //输入键盘值
+            editable.insert(start, Character.toString((char) primaryCode));
+        }
+    }
+
+    @Override
+    public void onText(CharSequence text) {
+
+    }
+
+    @Override
+    public void swipeLeft() {
+
+    }
+
+    @Override
+    public void swipeRight() {
+
+    }
+
+    @Override
+    public void swipeDown() {
+
+    }
+
+    @Override
+    public void swipeUp() {
+
     }
 }

@@ -25,15 +25,15 @@ import java.util.List;
  * Created by Adolph on 2018/3/13.
  */
 
-public class KeyboardDialogUtils implements View.OnClickListener {
+public class KeyboardUtils implements View.OnClickListener {
     protected View view;
     protected Dialog popWindow;
     protected Activity mContext;
-    private EditText contentView;
+    private EditText editText;
     private List<String> contentList;
     private BaseKeyboardView keyboardView;
 
-    public KeyboardDialogUtils(Activity mContext) {
+    public KeyboardUtils(Activity mContext) {
         try {
             this.mContext = mContext;
             if (contentList == null) {
@@ -55,8 +55,8 @@ public class KeyboardDialogUtils implements View.OnClickListener {
             window.setGravity(Gravity.BOTTOM | Gravity.FILL_HORIZONTAL);
             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             popWindow.setOnDismissListener(dialog -> {
-                if (contentView != null && contentView.isFocused()) {
-                    contentView.clearFocus();
+                if (editText != null && editText.isFocused()) {
+                    editText.clearFocus();
                 }
             });
             initView();
@@ -104,7 +104,8 @@ public class KeyboardDialogUtils implements View.OnClickListener {
         imm.hideSoftInputFromWindow(editText.getWindowToken(),0);
     }
 
-    public void show(final EditText editText) {
+    public void attachTo(final EditText editText) {
+        this.editText = editText;
         editText.setFocusable(true);
         editText.setFocusableInTouchMode(true);
         editText.requestFocus();
