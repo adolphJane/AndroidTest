@@ -15,10 +15,16 @@ public abstract class StatelessSection extends Section {
         super(parameters);
         if (parameters.emptyResourceId != null)
             throw new IllegalArgumentException("Stateless section shouldn`t have a loading state resource");
+        if (parameters.emptyViewWillBeProvided)
+            throw new IllegalArgumentException("Stateless section shouldn`t have emptyViewWillBeProvided set");
         if (parameters.failedResourceId != null)
             throw new IllegalArgumentException("Stateless section shouldn`t have a failed state resource");
+        if (parameters.failedViewWillBeProvided)
+            throw new IllegalArgumentException("Stateless section shouldn`t have failedViewWillBeProvided set");
         if (parameters.loadingResourceId != null)
             throw new IllegalArgumentException("Stateless section shouldn`t have a loading state resource");
+        if (parameters.loadingViewWillBeProvided)
+            throw new IllegalArgumentException("Stateless section shouldn`t have loadingViewWillBeProvided set");
     }
 
     @Override

@@ -26,14 +26,14 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     public final static int VIEW_TYPE_FAILED = 4;
     public final static int VIEW_TYPE_EMPTY = 5;
 
-    private LinkedHashMap<String, Section> sections;
-    private HashMap<String, Integer> sectionViewTypeNumbers;
+    private final Map<String, Section> sections;
+    private final Map<String, Integer> sectionViewTypeNumbers;
     private int viewTypeCount = 0;
-    private final static int VIEW_TYPE_QTY = 6;
+    private static final int VIEW_TYPE_QTY = 6;
 
     public SectionedRecyclerViewAdapter() {
         sections = new LinkedHashMap<>();
-        sectionViewTypeNumbers = new HashMap<>();
+        sectionViewTypeNumbers = new LinkedHashMap<>();
     }
 
     @Override
@@ -73,7 +73,10 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     private RecyclerView.ViewHolder getItemViewHolder(ViewGroup parent, Section section) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(section.getItemResourceId(), parent, false);
+        View view;
+        if (section.isItemViewWillBeProvided()) {
+            view = section.getItemView(parent);
+        }
         return section.getItemViewHolder(view);
     }
 

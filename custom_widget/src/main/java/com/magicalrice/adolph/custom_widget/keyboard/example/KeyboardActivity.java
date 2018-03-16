@@ -3,14 +3,16 @@ package com.magicalrice.adolph.custom_widget.keyboard.example;
 import android.text.InputType;
 import android.widget.EditText;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.magicalrice.adolph.common.base.BaseActivity;
+import com.magicalrice.adolph.common.base.RouterTable;
 import com.magicalrice.adolph.custom_widget.R;
 import com.magicalrice.adolph.custom_widget.keyboard.view.KeyboardUtils;
 
 /**
  * Created by Adolph on 2018/3/14.
  */
-
+@Route(path = RouterTable.ITEM_WIDGET_KEYBOARD)
 public class KeyboardActivity extends BaseActivity {
 
     private EditText edit;

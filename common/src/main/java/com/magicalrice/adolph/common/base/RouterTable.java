@@ -6,14 +6,15 @@ package com.magicalrice.adolph.common.base;
 
 public class RouterTable {
     //组
-    public static String GROUP_WIDGET = "/widget";
-    public static String GROUP_VIEW = "/view";
-    public static String GROUP_ANIMATION = "/animation";
-    public static String GROUP_LIBRARY_STUDY = "/libraryStudy";
+    public static final String GROUP_WIDGET = "/widget";
+    public static final String GROUP_VIEW = "/view";
+    public static final String GROUP_ANIMATION = "/animation";
+    public static final String GROUP_LIBRARY_STUDY = "/libraryStudy";
 
     //Widget
-    public static String ITEM_WIDGET_DRAGFLOAT = GROUP_WIDGET + "/dragfloat";
-    public static String ITEM_WIDGET_NOTIFICATION = GROUP_WIDGET + "/notification";
+    public static final String ITEM_WIDGET_DRAGFLOAT = GROUP_WIDGET + "/dragfloat";
+    public static final String ITEM_WIDGET_NOTIFICATION = GROUP_WIDGET + "/notification";
+    public static final String ITEM_WIDGET_KEYBOARD = GROUP_WIDGET + "/keyboard";
     //View
     //Animation
     //LibraryStudy

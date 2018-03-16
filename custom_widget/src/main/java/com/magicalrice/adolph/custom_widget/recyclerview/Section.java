@@ -3,6 +3,7 @@ package com.magicalrice.adolph.custom_widget.recyclerview;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.magicalrice.adolph.custom_widget.recyclerview.adapter.SectionedRecyclerViewAdapter;
 
@@ -21,18 +22,19 @@ public abstract class Section {
     private boolean hasHeader = false;
     private boolean hasFooter = false;
 
-    @LayoutRes
-    private Integer headerResourceId;
-    @LayoutRes
-    private Integer footerResourceId;
-    @LayoutRes
-    private Integer itemResourceId;
-    @LayoutRes
-    private Integer loadingResourceId;
-    @LayoutRes
-    private Integer failedResourceId;
-    @LayoutRes
-    private Integer emptyResourceId;
+    @LayoutRes private Integer headerResourceId;
+    @LayoutRes private Integer footerResourceId;
+    @LayoutRes private Integer itemResourceId;
+    @LayoutRes private Integer loadingResourceId;
+    @LayoutRes private Integer failedResourceId;
+    @LayoutRes private Integer emptyResourceId;
+
+    private final boolean itemViewWillBeProvided;
+    private final boolean headerViewWillBeProvided;
+    private final boolean footerViewWillBeProvided;
+    private final boolean loadingViewWillBeProvided;
+    private final boolean failedViewWillBeProvided;
+    private final boolean emptyViewWillBeProvided;
 
     public Section(SectionParameters parameters) {
         this.headerResourceId = parameters.headerResourceId;
@@ -42,8 +44,15 @@ public abstract class Section {
         this.failedResourceId = parameters.failedResourceId;
         this.emptyResourceId = parameters.emptyResourceId;
 
-        this.hasHeader = this.headerResourceId != null;
-        this.hasFooter = this.footerResourceId != null;
+        this.itemViewWillBeProvided = parameters.itemViewWillBeProvided;
+        this.headerViewWillBeProvided = parameters.headerViewWillBeProvided;
+        this.footerViewWillBeProvided = parameters.footerViewWillBeProvided;
+        this.loadingViewWillBeProvided = parameters.loadingViewWillBeProvided;
+        this.failedViewWillBeProvided = parameters.failedViewWillBeProvided;
+        this.emptyViewWillBeProvided = parameters.emptyViewWillBeProvided;
+
+        this.hasHeader = (this.headerResourceId != null) || this.headerViewWillBeProvided;
+        this.hasFooter = (this.footerResourceId != null) || this.footerViewWillBeProvided;
     }
 
     /**
@@ -54,139 +63,98 @@ public abstract class Section {
     public final void setState(State state) {
         switch (state) {
             case LOADING:
-                if (loadingResourceId == null) {
-                    throw new IllegalStateException("Missing 'loading state' resource id");
+                if (loadingResourceId == null && !loadingViewWillBeProvided) {
+                    throw new IllegalStateException("Resource id for 'loading state' should be provided or 'loadingViewWillBeProvided' should be set");
                 }
                 break;
             case FAILED:
-                if (failedResourceId == null) {
-                    throw new IllegalStateException("Missing 'failed state' resource id");
+                if (failedResourceId == null && !failedViewWillBeProvided) {
+                    throw new IllegalStateException("Resource id for 'failed state' should be provided or 'failedViewWillBeProvided' should be set");
                 }
                 break;
             case EMPTY:
-                if (emptyResourceId == null) {
-                    throw new IllegalStateException("Missing 'empty state' resource id");
+                if (emptyResourceId == null && !emptyViewWillBeProvided) {
+                    throw new IllegalStateException("Resource id for 'empty state' should be provided or 'emptyViewWillBeProvided' should be set");
                 }
                 break;
         }
         this.state = state;
     }
 
-    /**
-     * Return the current State of this Section
-     *
-     * @return current state of this section
-     */
     public final State getState() {
         return state;
     }
 
-    /**
-     * Check if this Section is visible
-     *
-     * @return true if this Section is visible
-     */
     public final boolean isVisible() {
         return visible;
     }
 
-    /**
-     * Set if this Section is visible
-     *
-     * @param visible true if this Section is visible
-     */
     public final void setVisible(boolean visible) {
         this.visible = visible;
     }
 
-    /**
-     * Check if this Section has a header
-     *
-     * @return true if this Section has a header
-     */
     public final boolean hasHeader() {
         return hasHeader;
     }
 
-    /**
-     * Set if this Section has header
-     *
-     * @param hasHeader true if this Section has a header
-     */
     public final void setHasHeader(boolean hasHeader) {
         this.hasHeader = hasHeader;
     }
 
-    /**
-     * Check if this Section has a footer
-     *
-     * @return true if this Section has a footer
-     */
     public final boolean hasFooter() {
         return hasFooter;
     }
 
-    /**
-     * Set if this Section has footer
-     *
-     * @param hasFooter true if this Section has a footer
-     */
     public final void setHasFooter(boolean hasFooter) {
         this.hasFooter = hasFooter;
     }
 
-    /**
-     * Return the layout resource id of the header
-     *
-     * @return layout resource id of the header
-     */
     public final Integer getHeaderResourceId() {
         return headerResourceId;
     }
 
-    /**
-     * Return the layout resource id of the footer
-     *
-     * @return layout resource id of the footer
-     */
     public Integer getFooterResourceId() {
         return footerResourceId;
     }
 
-    /**
-     * Return the layout resource id of the item
-     *
-     * @return layout resource id of the item
-     */
     public Integer getItemResourceId() {
         return itemResourceId;
     }
 
-    /**
-     * Return the layout resource id of the loading view
-     *
-     * @return layout resource id of the loading view
-     */
     public Integer getLoadingResourceId() {
         return loadingResourceId;
     }
 
-    /**
-     * Return the layout resource id of the failed view
-     *
-     * @return layout resource id of the failed view
-     */
     public Integer getFailedResourceId() {
         return failedResourceId;
     }
 
-    /**
-     * Return the layout resource id of the empty view
-     *
-     * @return layout resource id of the empty view
-     */
     public Integer getEmptyResourceId() {
         return emptyResourceId;
+    }
+
+    public boolean isItemViewWillBeProvided() {
+        return itemViewWillBeProvided;
+    }
+
+    public boolean isHeaderViewWillBeProvided() {
+        return headerViewWillBeProvided;
+    }
+
+    public boolean isFooterViewWillBeProvided() {
+        return footerViewWillBeProvided;
+    }
+
+    public boolean isLoadingViewWillBeProvided() {
+        return loadingViewWillBeProvided;
+    }
+
+    public boolean isFailedViewWillBeProvided() {
+        return failedViewWillBeProvided;
+    }
+
+    public boolean isEmptyViewWillBeProvided() {
+        return emptyViewWillBeProvided;
     }
 
     /**
@@ -287,6 +255,10 @@ public abstract class Section {
      */
     public void onBindFooterViewHolder(RecyclerView.ViewHolder holder) {
 
+    }
+
+    public View getItemView(ViewGroup group) {
+        throw new UnsupportedOperationException("You need to implement getItemView() if you set itemViewWillBeProvided.");
     }
 
     /**

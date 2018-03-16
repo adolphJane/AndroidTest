@@ -30,8 +30,8 @@ import com.magicalrice.adolph.common.base.RouterTable;
  */
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private String[] routers = {RouterTable.ITEM_WIDGET_DRAGFLOAT,RouterTable.ITEM_LIBRARY_STUDY_APPBARLAYOUT,RouterTable.ITEM_WIDGET_NOTIFICATION};
-    private String[] titles = {"应用内拖动悬浮按钮", "AppBarLayout&CollapsingToolbar组合使用","通知栏"};
+    private String[] routers = {RouterTable.ITEM_WIDGET_DRAGFLOAT,RouterTable.ITEM_LIBRARY_STUDY_APPBARLAYOUT,RouterTable.ITEM_WIDGET_NOTIFICATION,RouterTable.ITEM_WIDGET_KEYBOARD};
+    private String[] titles = {"应用内拖动悬浮按钮", "AppBarLayout&CollapsingToolbar组合使用","通知栏","自定义键盘"};
 
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private RecyclerView mActivityList;
