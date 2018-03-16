@@ -8,7 +8,9 @@ import android.text.Editable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
+import com.magicalrice.adolph.common.utils.ScreenUtils;
 import com.magicalrice.adolph.custom_widget.R;
 import com.orhanobut.logger.Logger;
 
@@ -21,6 +23,7 @@ import java.util.List;
 public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
     private Activity mContext;
     private View parentView;
+    private View backView;
     private KeyboardView mKeyView;       //数字键盘view
     private Keyboard mNumberKeyboard;       //数字键盘
     private Keyboard mLetterKeyboard;       //字母键盘
@@ -45,6 +48,7 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
         mSymbolKeyboard = new Keyboard(mContext, R.xml.cw_keyboard_symbol);
         mKeyView = parentView.findViewById(R.id.keyboard_view);
         mHeaderView = parentView.findViewById(R.id.keyboard_header);
+        backView = parentView.findViewById(R.id.view_back);
 
         mKeyView.setKeyboard(mNumberKeyboard);
         mKeyView.setEnabled(true);
@@ -57,6 +61,7 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
         if (mKeyView != null) {
             isSymbol = false;
             isNumber = false;
+            fixBackView(5);
             mKeyView.setKeyboard(mLetterKeyboard);
         }
     }
@@ -66,6 +71,7 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
         if (mKeyView != null) {
             isSymbol = true;
             isNumber = false;
+            fixBackView(25);
             mKeyView.setKeyboard(mSymbolKeyboard);
         }
     }
@@ -75,8 +81,15 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
         if (mKeyView != null) {
             isNumber = true;
             isSymbol = false;
+            fixBackView(25);
             mKeyView.setKeyboard(mNumberKeyboard);
         }
+    }
+
+    private void fixBackView(int value) {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) backView.getLayoutParams();
+        params.height = ScreenUtils.dp2px(mContext,value);
+        backView.setLayoutParams(params);
     }
 
     /**

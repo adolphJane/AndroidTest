@@ -26,7 +26,8 @@ public class CustomKeyboardView extends KeyboardView {
     private Context mContext;
 
     public CustomKeyboardView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        mContext = context;
     }
 
     public CustomKeyboardView(Context context, AttributeSet attrs, int defStyleAttr) {

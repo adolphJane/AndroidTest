@@ -1,5 +1,6 @@
 package com.magicalrice.adolph.custom_widget.keyboard.example;
 
+import android.text.InputType;
 import android.widget.EditText;
 
 import com.magicalrice.adolph.common.base.BaseActivity;
@@ -12,7 +13,7 @@ import com.magicalrice.adolph.custom_widget.keyboard.view.KeyboardUtils;
 
 public class KeyboardActivity extends BaseActivity {
 
-    private EditText text;
+    private EditText edit;
     private KeyboardUtils utils;
 
     @Override
@@ -28,7 +29,8 @@ public class KeyboardActivity extends BaseActivity {
     @Override
     protected void initUI() {
         isShowToolbar();
-        text = findViewById(R.id.edit_input);
+        edit = findViewById(R.id.edit_input);
+        edit.setInputType(InputType.TYPE_NULL);
     }
 
     @Override
@@ -38,7 +40,7 @@ public class KeyboardActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        text.setOnClickListener(v -> utils.attachTo((EditText) v));
+        edit.setOnClickListener(v -> utils.attachTo((EditText) v));
     }
 
     @Override
