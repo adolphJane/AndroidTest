@@ -7,14 +7,13 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,15 +23,19 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.magicalrice.adolph.common.base.AppManager;
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.common.base.RouterTable;
+import com.magicalrice.adolph.common.bean.AndroidTestInfo;
+import com.magicalrice.adolph.common.widget.recyclerview.SectionParameters;
+import com.magicalrice.adolph.common.widget.recyclerview.SectionedRecyclerViewAdapter;
+import com.magicalrice.adolph.common.widget.recyclerview.StatelessSection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Adolph on 2018/1/18.
  */
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private String[] routers = {RouterTable.ITEM_WIDGET_DRAGFLOAT,RouterTable.ITEM_LIBRARY_STUDY_APPBARLAYOUT,RouterTable.ITEM_WIDGET_NOTIFICATION,RouterTable.ITEM_WIDGET_KEYBOARD};
-    private String[] titles = {"应用内拖动悬浮按钮", "AppBarLayout&CollapsingToolbar组合使用","通知栏","自定义键盘"};
-
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private RecyclerView mActivityList;
     private DrawerLayout drawerLayout;
@@ -40,7 +43,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private ActionBarDrawerToggle toggle;
     private long exitTime = 0;
-    private TestAdapter adapter;
+    private SectionedRecyclerViewAdapter adapter;
 
     @Override
     protected void initToolbar() {
@@ -49,7 +52,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleGravity(Gravity.LEFT);
         collapsingToolbarLayout.setExpandedTitleGravity(Gravity.LEFT | Gravity.BOTTOM);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);                               //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         toggle.syncState();
@@ -71,8 +74,25 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     protected void initData() {
-        adapter = new TestAdapter();
-        mActivityList.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new SectionedRecyclerViewAdapter();
+        adapter.addSection(new ExpandableTestSection("自定义动画",getCustomAnimationList()));
+        adapter.addSection(new ExpandableTestSection("自定义视图",getCustomViewList()));
+        adapter.addSection(new ExpandableTestSection("自定义控件",getCustomWidgetList()));
+        adapter.addSection(new ExpandableTestSection("游戏",getGameList()));
+        adapter.addSection(new ExpandableTestSection("第三方库学习",getLibraryStudyList()));
+        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                switch (adapter.getSectionItemViewType(position)) {
+                    case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
+                        return 2;
+                    default:
+                        return 1;
+                }
+            }
+        });
+        mActivityList.setLayoutManager(manager);
         mActivityList.setAdapter(adapter);
     }
 
@@ -99,20 +119,69 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return false;
     }
 
-    public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder> {
-        @Override
-        public TestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getLayoutInflater().inflate(R.layout.main_item_recycler, parent, false);
-            TestViewHolder holder = new TestViewHolder(view);
-            return holder;
+    private List<AndroidTestInfo> getCustomAnimationList() {
+        List<AndroidTestInfo> list = new ArrayList<>();
+        return list;
+    }
+
+    private List<AndroidTestInfo> getCustomViewList() {
+        List<AndroidTestInfo> list = new ArrayList<>();
+        return list;
+    }
+
+    private List<AndroidTestInfo> getCustomWidgetList() {
+        List<AndroidTestInfo> list = new ArrayList<>();
+        list.add(new AndroidTestInfo("应用内拖动悬浮按钮","",RouterTable.ITEM_WIDGET_DRAGFLOAT));
+        list.add(new AndroidTestInfo("通知栏","",RouterTable.ITEM_WIDGET_NOTIFICATION));
+        list.add(new AndroidTestInfo("自定义键盘","",RouterTable.ITEM_WIDGET_KEYBOARD));
+        return list;
+    }
+
+    private List<AndroidTestInfo> getGameList() {
+        List<AndroidTestInfo> list = new ArrayList<>();
+        return list;
+    }
+
+    private List<AndroidTestInfo> getLibraryStudyList() {
+        List<AndroidTestInfo> list = new ArrayList<>();
+        list.add(new AndroidTestInfo("AppBarLayout&CollapsingToolbar组合使用","",RouterTable.ITEM_LIBRARY_STUDY_APPBARLAYOUT));
+        return list;
+    }
+
+    private class ExpandableTestSection extends StatelessSection {
+
+        private String title;
+        private List<AndroidTestInfo> list;
+        private boolean isExpendable = false;
+
+        public ExpandableTestSection(String title, List<AndroidTestInfo> list) {
+            super(SectionParameters.builder()
+                    .itemResourceId(R.layout.main_section_item_test)
+                    .headerResourceId(R.layout.main_section_header_test)
+                    .build());
+            this.title = title;
+            this.list = list;
         }
 
         @Override
-        public void onBindViewHolder(TestViewHolder holder, int position) {
-            holder.tv_demo.setText(titles[position]);
-            holder.ll_demo.setOnClickListener(v -> {
+        public int getContentItemsTotal() {
+            return isExpendable ? list.size() : 0;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder getItemViewHolder(View view) {
+            return new ItemViewHolder(view);
+        }
+
+        @Override
+        public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
+            final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+
+            itemViewHolder.tvTitle.setText(list.get(position).getName());
+            itemViewHolder.tvContent.setText(list.get(position).getContent());
+            itemViewHolder.rootView.setOnClickListener(v -> {
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, v, "card");
-                ARouter.getInstance().build(routers[position]).withOptionsCompat(options).navigation(MainActivity.this, new NavigationCallback() {
+                ARouter.getInstance().build(list.get(position).getPath()).withOptionsCompat(options).navigation(MainActivity.this, new NavigationCallback() {
                     @Override
                     public void onFound(Postcard postcard) {
                         showShortToast("发现目标Activity");
@@ -137,19 +206,45 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
 
         @Override
-        public int getItemCount() {
-            return routers.length;
+        public RecyclerView.ViewHolder getHeaderViewHolder(View view) {
+            return new HeaderViewHolder(view);
         }
 
-        class TestViewHolder extends RecyclerView.ViewHolder {
-            private TextView tv_demo;
-            private CardView ll_demo;
+        @Override
+        public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
+            final HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
 
-            public TestViewHolder(View itemView) {
-                super(itemView);
-                tv_demo = itemView.findViewById(R.id.tv_demo);
-                ll_demo = itemView.findViewById(R.id.item_card_demo);
-            }
+            headerViewHolder.tvTitle.setText(title);
+            headerViewHolder.imgArrow.setImageResource(isExpendable ? R.drawable.co_ic_expand_less_black_24dp : R.drawable.co_ic_expand_more_black_24dp);
+            headerViewHolder.rootView.setOnClickListener(v -> {
+                isExpendable = !isExpendable;
+                adapter.notifyDataSetChanged();
+            });
+        }
+    }
+
+    private class ItemViewHolder extends RecyclerView.ViewHolder {
+        private View rootView;
+        private TextView tvTitle,tvContent;
+
+        public ItemViewHolder(View itemView) {
+            super(itemView);
+            rootView = itemView;
+            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvContent = itemView.findViewById(R.id.tvContent);
+        }
+    }
+
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
+        private View rootView;
+        private TextView tvTitle;
+        private ImageView imgArrow;
+
+        public HeaderViewHolder(View itemView) {
+            super(itemView);
+            rootView = itemView;
+            tvTitle = itemView.findViewById(R.id.tvTitle);
+            imgArrow = itemView.findViewById(R.id.imgArrow);
         }
     }
 

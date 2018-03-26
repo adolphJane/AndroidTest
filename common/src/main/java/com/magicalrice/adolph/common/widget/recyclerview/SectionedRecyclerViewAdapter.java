@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.custom_widget.recyclerview.adapter;
+package com.magicalrice.adolph.common.widget.recyclerview;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -8,27 +8,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.magicalrice.adolph.custom_widget.recyclerview.Section;
-
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created by Adolph on 2018/1/25.
- */
+import static com.magicalrice.adolph.common.widget.recyclerview.Section.State;
 
+/**
+ * A custom RecyclerView Adapter that allows {@link Section Sections} to be added to it.
+ * Sections are displayed in the same order they were added.
+ */
+@SuppressWarnings({"WeakerAccess", "SameParameterValue", "PMD.CollapsibleIfStatements"})
 public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    public final static int VIEW_TYPE_HEADER = 0;
-    public final static int VIEW_TYPE_FOOTER = 1;
-    public final static int VIEW_TYPE_ITEM_LOADED = 2;
-    public final static int VIEW_TYPE_LOADING = 3;
-    public final static int VIEW_TYPE_FAILED = 4;
-    public final static int VIEW_TYPE_EMPTY = 5;
+
+    public static final int VIEW_TYPE_HEADER = 0;
+    public static final int VIEW_TYPE_FOOTER = 1;
+    public static final int VIEW_TYPE_ITEM_LOADED = 2;
+    public static final int VIEW_TYPE_LOADING = 3;
+    public static final int VIEW_TYPE_FAILED = 4;
+    public static final int VIEW_TYPE_EMPTY = 5;
 
     private final Map<String, Section> sections;
     private final Map<String, Integer> sectionViewTypeNumbers;
+
     private int viewTypeCount = 0;
     private static final int VIEW_TYPE_QTY = 6;
 
@@ -43,6 +45,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
         for (Map.Entry<String, Integer> entry : sectionViewTypeNumbers.entrySet()) {
             if (viewType >= entry.getValue() && viewType < entry.getValue() + VIEW_TYPE_QTY) {
+
                 Section section = sections.get(entry.getKey());
                 int sectionViewType = viewType - entry.getValue();
 
@@ -70,12 +73,13 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                 }
             }
         }
+
         return viewHolder;
     }
 
     @VisibleForTesting
-    View inflate(@LayoutRes int layoutResourceId,ViewGroup group) {
-        return LayoutInflater.from(group.getContext()).inflate(layoutResourceId,group);
+    View inflate(@LayoutRes int layoutResourceId, ViewGroup parent) {
+        return LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
     }
 
     private RecyclerView.ViewHolder getItemViewHolder(ViewGroup parent, Section section) {
@@ -83,55 +87,100 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         if (section.isItemViewWillBeProvided()) {
             view = section.getItemView(parent);
             if (view == null) {
-                throw new NullPointerException("Section.getItemView() return null");
+                throw new NullPointerException("Section.getItemView() returned null");
             }
         } else {
             Integer resId = section.getItemResourceId();
             if (resId == null) {
                 throw new NullPointerException("Missing 'item' resource id");
             }
-            view = inflate(resId,parent);
+            view = inflate(resId, parent);
         }
         return section.getItemViewHolder(view);
     }
 
     private RecyclerView.ViewHolder getHeaderViewHolder(ViewGroup parent, Section section) {
-        Integer resId = section.getHeaderResourceId();
-        if (resId == null)
-            throw new NullPointerException("Missing 'header state' resource id");
-        View view = LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
+        View view;
+        if (section.isHeaderViewWillBeProvided()) {
+            view = section.getHeaderView(parent);
+            if (view == null) {
+                throw new NullPointerException("Section.getHeaderView() returned null");
+            }
+        } else {
+            Integer resId = section.getHeaderResourceId();
+            if (resId == null) {
+                throw new NullPointerException("Missing 'header' resource id");
+            }
+            view = inflate(resId, parent);
+        }
         return section.getHeaderViewHolder(view);
     }
 
     private RecyclerView.ViewHolder getFooterViewHolder(ViewGroup parent, Section section) {
-        Integer resId = section.getFooterResourceId();
-        if (resId == null)
-            throw new NullPointerException("Missing 'footer state' resource id");
-        View view = LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
+        View view;
+        if (section.isFooterViewWillBeProvided()) {
+            view = section.getFooterView(parent);
+            if (view == null) {
+                throw new NullPointerException("Section.getFooterView() returned null");
+            }
+        } else {
+            Integer resId = section.getFooterResourceId();
+            if (resId == null) {
+                throw new NullPointerException("Missing 'footer' resource id");
+            }
+            view = inflate(resId, parent);
+        }
         return section.getFooterViewHolder(view);
     }
 
     private RecyclerView.ViewHolder getLoadingViewHolder(ViewGroup parent, Section section) {
-        Integer resId = section.getLoadingResourceId();
-        if (resId == null)
-            throw new NullPointerException("Missing 'loading state' resource id");
-        View view = LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
+        View view;
+        if (section.isLoadingViewWillBeProvided()) {
+            view = section.getLoadingView(parent);
+            if (view == null) {
+                throw new NullPointerException("Section.getLoadingView() returned null");
+            }
+        } else {
+            Integer resId = section.getLoadingResourceId();
+            if (resId == null) {
+                throw new NullPointerException("Missing 'loading' resource id");
+            }
+            view = inflate(resId, parent);
+        }
         return section.getLoadingViewHolder(view);
     }
 
     private RecyclerView.ViewHolder getFailedViewHolder(ViewGroup parent, Section section) {
-        Integer resId = section.getFailedResourceId();
-        if (resId == null)
-            throw new NullPointerException("Missing 'failed state' resource id");
-        View view = LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
+        View view;
+        if (section.isFailedViewWillBeProvided()) {
+            view = section.getFailedView(parent);
+            if (view == null) {
+                throw new NullPointerException("Section.getFailedView() returned null");
+            }
+        } else {
+            Integer resId = section.getFailedResourceId();
+            if (resId == null) {
+                throw new NullPointerException("Missing 'failed' resource id");
+            }
+            view = inflate(resId, parent);
+        }
         return section.getFailedViewHolder(view);
     }
 
     private RecyclerView.ViewHolder getEmptyViewHolder(ViewGroup parent, Section section) {
-        Integer resId = section.getEmptyResourceId();
-        if (resId == null)
-            throw new NullPointerException("Missing 'empty state' resource id");
-        View view = LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
+        View view;
+        if (section.isEmptyViewWillBeProvided()) {
+            view = section.getEmptyView(parent);
+            if (view == null) {
+                throw new NullPointerException("Section.getEmptyView() returned null");
+            }
+        } else {
+            Integer resId = section.getEmptyResourceId();
+            if (resId == null) {
+                throw new NullPointerException("Missing 'empty' resource id");
+            }
+            view = inflate(resId, parent);
+        }
         return section.getEmptyViewHolder(view);
     }
 
@@ -148,14 +197,16 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     /**
-     * Add a section to this recyclerview with a random tag;
+     * Add a section to this recyclerview with a random tag.
      *
      * @param section section to be added
      * @return generated tag
      */
     public String addSection(Section section) {
         String tag = UUID.randomUUID().toString();
+
         addSection(tag, section);
+
         return tag;
     }
 
@@ -172,10 +223,29 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     /**
      * Remove section from this recyclerview.
      *
+     * @param section section to be removed
+     */
+    public void removeSection(Section section) {
+        String tag = null;
+        for (final Map.Entry<String, Section> entry : this.sections.entrySet()) {
+            if (entry.getValue() == section) {
+                tag = entry.getKey();
+            }
+        }
+
+        if (tag != null) {
+            this.removeSection(tag);
+        }
+    }
+
+    /**
+     * Remove section from this recyclerview.
+     *
      * @param tag unique identifier of the section
      */
     public void removeSection(String tag) {
         this.sections.remove(tag);
+        this.sectionViewTypeNumbers.remove(tag);
     }
 
     /**
@@ -186,8 +256,71 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        int currentPos = 0;
+
+        for (Map.Entry<String, Section> entry : sections.entrySet()) {
+            Section section = entry.getValue();
+
+            // ignore invisible sections
+            if (!section.isVisible()) {
+                continue;
+            }
+
+            int sectionTotal = section.getSectionItemsTotal();
+
+            // check if position is in this section
+            if (position >= currentPos && position <= (currentPos + sectionTotal - 1)) {
+
+                if (section.hasHeader()) {
+                    if (position == currentPos) {
+                        // delegate the binding to the section header
+                        getSectionForPosition(position).onBindHeaderViewHolder(holder);
+                        return;
+                    }
+                }
+
+                if (section.hasFooter()) {
+                    if (position == (currentPos + sectionTotal - 1)) {
+                        // delegate the binding to the section header
+                        getSectionForPosition(position).onBindFooterViewHolder(holder);
+                        return;
+                    }
+                }
+
+                // delegate the binding to the section content
+                getSectionForPosition(position).onBindContentViewHolder(holder, getPositionInSection(position));
+                return;
+            }
+
+            currentPos += sectionTotal;
+        }
+
+        throw new IndexOutOfBoundsException("Invalid position");
+    }
+
+    @Override
+    public int getItemCount() {
+        int count = 0;
+
+        for (Map.Entry<String, Section> entry : sections.entrySet()) {
+            Section section = entry.getValue();
+
+            // ignore invisible sections
+            if (!section.isVisible()) {
+                continue;
+            }
+
+            count += section.getSectionItemsTotal();
+        }
+
+        return count;
+    }
+
+    @Override
     public int getItemViewType(int position) {
-         /*
+        /*
          Each Section has 6 "viewtypes":
          1) header
          2) footer
@@ -196,16 +329,23 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
          5) load failed
          6) empty
          */
-
         int currentPos = 0;
 
         for (Map.Entry<String, Section> entry : sections.entrySet()) {
             Section section = entry.getValue();
-            if (!section.isVisible())
+
+            // ignore invisible sections
+            if (!section.isVisible()) {
                 continue;
+            }
+
             int sectionTotal = section.getSectionItemsTotal();
+
+            // check if position is in this section
             if (position >= currentPos && position <= (currentPos + sectionTotal - 1)) {
+
                 int viewType = sectionViewTypeNumbers.get(entry.getKey());
+
                 if (section.hasHeader()) {
                     if (position == currentPos) {
                         return viewType;
@@ -228,79 +368,33 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                     case EMPTY:
                         return viewType + 5;
                     default:
-                        throw new IllegalStateException("Invalid State");
+                        throw new IllegalStateException("Invalid state");
                 }
             }
-            currentPos += sectionTotal;
-        }
 
-        throw new IndexOutOfBoundsException("Invalid Position");
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        int currentPos = 0;
-
-        for (Map.Entry<String, Section> entry : sections.entrySet()) {
-            Section section = entry.getValue();
-            if (!section.isVisible())
-                continue;
-
-            int sectionTotal = section.getSectionItemsTotal();
-
-            //check if position is in this section
-            if (position >= currentPos && position <= (currentPos + sectionTotal - 1)) {
-                if (section.hasHeader()) {
-                    if (position == currentPos) {
-                        getSectionForPosition(position).onBindHeaderViewHolder(holder);
-                        return;
-                    }
-                }
-
-                if (section.hasFooter()) {
-                    if (position == (currentPos + sectionTotal - 1)) {
-                        getSectionForPosition(position).onBindFooterViewHolder(holder);
-                        return;
-                    }
-                }
-
-                return;
-            }
             currentPos += sectionTotal;
         }
 
         throw new IndexOutOfBoundsException("Invalid position");
     }
 
-    @Override
-    public int getItemCount() {
-        int count = 0;
-
-        for (Map.Entry<String, Section> entry : sections.entrySet()) {
-            Section section = entry.getValue();
-            if (!section.isVisible())
-                continue;
-            count += section.getSectionItemsTotal();
-        }
-        return count;
-    }
-
     /**
-     * Returns the Section ViewType of an item based on the position in the adapter:
-     * <p>
-     * - SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER
-     * - SectionedRecyclerViewAdapter.VIEW_TYPE_FOOTER
-     * - SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED
-     * - SectionedRecyclerViewAdapter.VIEW_TYPE_LOADING
-     * - SectionedRecyclerViewAdapter.VIEW_TYPE_FAILED
-     * - SectionedRecyclerViewAdapter.VIEW_TYPE_EMPTY
+     * Returns the Section ViewType of an item based on the position in the adapter.
      *
      * @param position position in the adapter
-     * @return SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER, VIEW_TYPE_FOOTER,
-     * VIEW_TYPE_ITEM_LOADED, VIEW_TYPE_LOADING, VIEW_TYPE_FAILED or VIEW_TYPE_EMPTY
+     * @return one of the view types:
+     * <ul>
+     * <li>SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER</li>
+     * <li>SectionedRecyclerViewAdapter.VIEW_TYPE_FOOTER</li>
+     * <li>SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED</li>
+     * <li>SectionedRecyclerViewAdapter.VIEW_TYPE_LOADING</li>
+     * <li>SectionedRecyclerViewAdapter.VIEW_TYPE_FAILED</li>
+     * <li>SectionedRecyclerViewAdapter.VIEW_TYPE_EMPTY</li>
+     * </ul>
      */
     public int getSectionItemViewType(int position) {
         int viewType = getItemViewType(position);
+
         return viewType % VIEW_TYPE_QTY;
     }
 
@@ -311,18 +405,36 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return Section object for that position
      */
     public Section getSectionForPosition(int position) {
+
         int currentPos = 0;
+
         for (Map.Entry<String, Section> entry : sections.entrySet()) {
             Section section = entry.getValue();
-            if (!section.isVisible())
+
+            // ignore invisible sections
+            if (!section.isVisible()) {
                 continue;
+            }
+
             int sectionTotal = section.getSectionItemsTotal();
+
+            // check if position is in this section
             if (position >= currentPos && position <= (currentPos + sectionTotal - 1)) {
                 return section;
             }
+
             currentPos += sectionTotal;
         }
-        throw new IndexOutOfBoundsException("Invalid Position");
+
+        throw new IndexOutOfBoundsException("Invalid position");
+    }
+
+    /**
+     * @deprecated Use {@link #getPositionInSection} instead.
+     */
+    @Deprecated
+    public int getSectionPosition(int position) {
+        return getPositionInSection(position);
     }
 
     /**
@@ -333,17 +445,26 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public int getPositionInSection(int position) {
         int currentPos = 0;
+
         for (Map.Entry<String, Section> entry : sections.entrySet()) {
             Section section = entry.getValue();
-            if (!section.isVisible())
+
+            // ignore invisible sections
+            if (!section.isVisible()) {
                 continue;
+            }
+
             int sectionTotal = section.getSectionItemsTotal();
+
+            // check if position is in this section
             if (position >= currentPos && position <= (currentPos + sectionTotal - 1)) {
                 return position - currentPos - (section.hasHeader() ? 1 : 0);
             }
+
             currentPos += sectionTotal;
         }
-        throw new IndexOutOfBoundsException("Invalid Position");
+
+        throw new IndexOutOfBoundsException("Invalid position");
     }
 
     /**
@@ -353,7 +474,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return position of the section in the adapter
      */
     public int getSectionPosition(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         return getSectionPosition(section);
     }
 
@@ -365,21 +487,35 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public int getSectionPosition(Section section) {
         int currentPos = 0;
+
         for (Map.Entry<String, Section> entry : sections.entrySet()) {
             Section loopSection = entry.getValue();
-            if (!loopSection.isVisible())
+
+            // ignore invisible sections
+            if (!loopSection.isVisible()) {
                 continue;
-            if (loopSection == section)
+            }
+
+            if (loopSection == section) {
                 return currentPos;
+            }
+
             int sectionTotal = loopSection.getSectionItemsTotal();
+
             currentPos += sectionTotal;
         }
-        throw new IllegalArgumentException("Invalid Section");
+
+        throw new IllegalArgumentException("Invalid section");
     }
 
+    /**
+     * Return a copy of the map with all sections of this adapter.
+     *
+     * @return a copy of the map with all sections
+     */
     @NonNull
-    public Map<String,Section> getCopyOfSectionMap() {
-        Map<String,Section> copyOfSections;
+    public Map<String, Section> getCopyOfSectionsMap() {
+        Map<String, Section> copyOfSections;
         synchronized (sections) {
             copyOfSections = new LinkedHashMap<>(sections);
         }
@@ -395,7 +531,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return position of the item in the adapter
      */
     public int getPositionInAdapter(String tag, int position) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         return getPositionInAdapter(section, position);
     }
 
@@ -418,7 +555,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return position of the header in the adapter
      */
     public int getHeaderPositionInAdapter(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         return getHeaderPositionInAdapter(section);
     }
 
@@ -429,8 +567,10 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return position of the header in the adapter
      */
     public int getHeaderPositionInAdapter(Section section) {
-        if (!section.isVisible())
-            throw new IllegalStateException("Section doesn`t have a header");
+        if (!section.hasHeader()) {
+            throw new IllegalStateException("Section doesn't have a header");
+        }
+
         return getSectionPosition(section);
     }
 
@@ -441,7 +581,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return position of the footer in the adapter
      */
     public int getFooterPositionInAdapter(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         return getFooterPositionInAdapter(section);
     }
 
@@ -452,8 +593,9 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @return position of the footer in the adapter
      */
     public int getFooterPositionInAdapter(Section section) {
-        if (!section.hasFooter())
-            throw new IllegalStateException("Section doesn`t hava a footer");
+        if (!section.hasFooter()) {
+            throw new IllegalStateException("Section doesn't have a footer");
+        }
 
         return getSectionPosition(section) + section.getSectionItemsTotal() - 1;
     }
@@ -599,7 +741,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifyHeaderChangedInSection(String tag) {
-        notifyHeaderChangedInSection(getValidSectionThrowException(tag));
+        notifyHeaderChangedInSection(getValidSectionOrThrowException(tag));
     }
 
     /**
@@ -619,7 +761,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifyFooterChangedInSection(String tag) {
-        notifyFooterChangedInSection(getValidSectionThrowException(tag));
+        notifyFooterChangedInSection(getValidSectionOrThrowException(tag));
     }
 
     /**
@@ -675,7 +817,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param itemCount     number of items inserted in the section
      * @param payload       optional parameter, use null to identify a "full" update
      */
-    public void notifyItemRangeChangedInSection(String tag, int positionStart, int itemCount, Object payload) {
+    public void notifyItemRangeChangedInSection(String tag, int positionStart, int itemCount,
+                                                Object payload) {
         callSuperNotifyItemRangeChanged(getPositionInAdapter(tag, positionStart), itemCount, payload);
     }
 
@@ -688,7 +831,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param itemCount     number of items inserted in the section
      * @param payload       optional parameter, use null to identify a "full" update
      */
-    public void notifyItemRangeChangedInSection(Section section, int positionStart, int itemCount, Object payload) {
+    public void notifyItemRangeChangedInSection(Section section, int positionStart, int itemCount,
+                                                Object payload) {
         callSuperNotifyItemRangeChanged(getPositionInAdapter(section, positionStart), itemCount, payload);
     }
 
@@ -727,64 +871,76 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     /**
-     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link Section.State}
+     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link State}
      * view holder in the adapter. Useful to be called after changing the State from
      * LOADING/FAILED/EMPTY to LOADING/FAILED/EMPTY.
      *
      * @param tag           unique identifier of the section
      * @param previousState previous state of section
      */
-    public void notifyNotLoadedStateChanged(String tag, Section.State previousState) {
-        Section section = getValidSectionThrowException(tag);
+    public void notifyNotLoadedStateChanged(String tag, State previousState) {
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyNotLoadedStateChanged(section, previousState);
     }
 
     /**
-     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link Section.State}
+     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link State}
      * view holder in the adapter. Useful to be called after changing the State from
      * LOADING/ FAILED/ EMPTY to LOADING/ FAILED/ EMPTY.
      *
      * @param section       a visible section of this adapter
      * @param previousState previous state of section
      */
-    public void notifyNotLoadedStateChanged(Section section, Section.State previousState) {
-        Section.State state = section.getState();
-        if (state == previousState)
-            throw new IllegalStateException("No State Changed");
-        if (previousState == Section.State.LOADED)
+    public void notifyNotLoadedStateChanged(Section section, State previousState) {
+        State state = section.getState();
+
+        if (state == previousState) {
+            throw new IllegalStateException("No state changed");
+        }
+
+        if (previousState == State.LOADED) {
             throw new IllegalStateException("Use notifyStateChangedFromLoaded");
-        if (state == Section.State.LOADED)
+        }
+
+        if (state == State.LOADED) {
             throw new IllegalStateException("Use notifyStateChangedToLoaded");
+        }
+
         notifyItemChangedInSection(section, 0);
     }
 
     /**
      * Helper method that calls {@link #notifyItemChanged} and {@link #notifyItemInserted} with
-     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
+     * the position of the {@link State} view holder in the adapter. Useful to be called after
      * changing the State from LOADING/ FAILED/ EMPTY to LOADED.
      *
      * @param tag           unique identifier of the section
      * @param previousState previous state of section
      */
-    public void notifyStateChangedToLoaded(String tag, Section.State previousState) {
-        Section section = getValidSectionThrowException(tag);
+    public void notifyStateChangedToLoaded(String tag, State previousState) {
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyStateChangedToLoaded(section, previousState);
     }
 
     /**
      * Helper method that calls {@link #notifyItemChanged} and {@link #notifyItemInserted} with
-     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
+     * the position of the {@link State} view holder in the adapter. Useful to be called after
      * changing the State from LOADING/ FAILED/ EMPTY to LOADED.
      *
      * @param section       a visible section of this adapter
      * @param previousState previous state of section
      */
-    public void notifyStateChangedToLoaded(Section section, Section.State previousState) {
-        Section.State state = section.getState();
-        if (state == previousState)
-            throw new IllegalStateException("No State Changed");
-        if (state != Section.State.LOADED) {
-            if (previousState == Section.State.LOADED) {
+    public void notifyStateChangedToLoaded(Section section, State previousState) {
+        State state = section.getState();
+
+        if (state == previousState) {
+            throw new IllegalStateException("No state changed");
+        }
+
+        if (state != State.LOADED) {
+            if (previousState == State.LOADED) {
                 throw new IllegalStateException("Use notifyStateChangedFromLoaded");
             } else {
                 throw new IllegalStateException("Use notifyNotLoadedStateChanged");
@@ -797,6 +953,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             notifyItemRemovedFromSection(section, 0);
         } else {
             notifyItemChangedInSection(section, 0);
+
             if (contentItemsTotal > 1) {
                 notifyItemRangeInsertedInSection(section, 1, contentItemsTotal - 1);
             }
@@ -805,35 +962,40 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     /**
      * Helper method that calls {@link #notifyItemRangeRemoved} and {@link #notifyItemChanged} with
-     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
+     * the position of the {@link State} view holder in the adapter. Useful to be called after
      * changing the State from LOADED to LOADING/ FAILED/ EMPTY.
      *
      * @param tag                       unique identifier of the section
      * @param previousContentItemsCount previous content items count of section
      */
     public void notifyStateChangedFromLoaded(String tag, int previousContentItemsCount) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyStateChangedFromLoaded(section, previousContentItemsCount);
     }
 
     /**
      * Helper method that calls {@link #notifyItemRangeRemoved} and {@link #notifyItemChanged} with
-     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
+     * the position of the {@link State} view holder in the adapter. Useful to be called after
      * changing the State from LOADED to LOADING/ FAILED/ EMPTY.
      *
      * @param section                   a visible section of this adapter
      * @param previousContentItemsCount previous content items count of section
      */
     public void notifyStateChangedFromLoaded(Section section, int previousContentItemsCount) {
-        Section.State state = section.getState();
-        if (state == Section.State.LOADED)
+        State state = section.getState();
+
+        if (state == State.LOADED) {
             throw new IllegalStateException("Use notifyStateChangedToLoaded");
+        }
+
         if (previousContentItemsCount == 0) {
             notifyItemInsertedInSection(section, 0);
         } else {
             if (previousContentItemsCount > 1) {
                 notifyItemRangeRemovedFromSection(section, 1, previousContentItemsCount - 1);
             }
+
             notifyItemChangedInSection(section, 0);
         }
     }
@@ -846,7 +1008,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifyHeaderInsertedInSection(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyHeaderInsertedInSection(section);
     }
 
@@ -859,6 +1022,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public void notifyHeaderInsertedInSection(Section section) {
         int headerPosition = getHeaderPositionInAdapter(section);
+
         callSuperNotifyItemInserted(headerPosition);
     }
 
@@ -870,7 +1034,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifyFooterInsertedInSection(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyFooterInsertedInSection(section);
     }
 
@@ -883,6 +1048,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public void notifyFooterInsertedInSection(Section section) {
         int footerPosition = getFooterPositionInAdapter(section);
+
         callSuperNotifyItemInserted(footerPosition);
     }
 
@@ -894,7 +1060,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifyHeaderRemovedFromSection(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyHeaderRemovedFromSection(section);
     }
 
@@ -907,6 +1074,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public void notifyHeaderRemovedFromSection(Section section) {
         int position = getSectionPosition(section);
+
         callSuperNotifyItemRemoved(position);
     }
 
@@ -918,7 +1086,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifyFooterRemovedFromSection(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifyFooterRemovedFromSection(section);
     }
 
@@ -931,6 +1100,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public void notifyFooterRemovedFromSection(Section section) {
         int position = getSectionPosition(section) + section.getSectionItemsTotal();
+
         callSuperNotifyItemRemoved(position);
     }
 
@@ -942,7 +1112,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param tag unique identifier of the section
      */
     public void notifySectionChangedToVisible(String tag) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifySectionChangedToVisible(section);
     }
 
@@ -954,10 +1125,14 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param section a visible section of this adapter
      */
     public void notifySectionChangedToVisible(Section section) {
-        if (!section.isVisible())
-            throw new IllegalStateException("This section is not visible");
+        if (!section.isVisible()) {
+            throw new IllegalStateException("This section is not visible.");
+        }
+
         int sectionPosition = getSectionPosition(section);
+
         int sectionItemsTotal = section.getSectionItemsTotal();
+
         callSuperNotifyItemRangeInserted(sectionPosition, sectionItemsTotal);
     }
 
@@ -970,7 +1145,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param previousSectionPosition previous section position
      */
     public void notifySectionChangedToInvisible(String tag, int previousSectionPosition) {
-        Section section = getValidSectionThrowException(tag);
+        Section section = getValidSectionOrThrowException(tag);
+
         notifySectionChangedToInvisible(section, previousSectionPosition);
     }
 
@@ -983,17 +1159,23 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param previousSectionPosition previous section position
      */
     public void notifySectionChangedToInvisible(Section section, int previousSectionPosition) {
-        if (!section.isVisible())
-            throw new IllegalStateException("This section is not visible");
+        if (section.isVisible()) {
+            throw new IllegalStateException("This section is not visible.");
+        }
+
         int sectionItemsTotal = section.getSectionItemsTotal();
+
         callSuperNotifyItemRangeRemoved(previousSectionPosition, sectionItemsTotal);
     }
 
     @NonNull
-    private Section getValidSectionThrowException(String tag) {
+    private Section getValidSectionOrThrowException(String tag) {
         Section section = getSection(tag);
-        if (section == null)
-            throw new IllegalArgumentException("Invalid tag:" + tag);
+
+        if (section == null) {
+            throw new IllegalArgumentException("Invalid tag: " + tag);
+        }
+
         return section;
     }
 
