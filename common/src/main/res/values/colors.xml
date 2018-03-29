@@ -8,4 +8,5 @@
     <color name="co_black2">#FF000000</color>
     <color name="co_white1">#FFFFFFFF</color>
     <color name="co_transparent">#00000000</color>
+    <color name="co_gray1">#70FFFFFF</color>
 </resources>

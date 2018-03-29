@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'blockcanaryex'
 apply plugin: 'bugly'
 
 android {
@@ -35,53 +34,33 @@ android {
     }
 }
 
-block {
-    debugEnabled true //在debug模式下开启方法采样，默认为true
-    releaseEnabled false //在release模式下开启方法采样，默认为false
-    excludePackages = [] //不希望进行方法采样的包名, 比如: ['com.android', 'android.support']
-    excludeClasses = [] //不希望进行方法采样的类名
-    includePackages = [] //指定开启方法采样的包名，如果不为空，则其它没有包括进来的包都不会开启方法采样
-
-    scope {
-        project true //开启主项目代码方法采样，默认为true
-        projectLocalDep true //开启主项目本地libs代码(比如.jar)方法采样，默认为false,
-        subProject true //开启子项目代码方法采样，默认为true
-        subProjectLocalDep true //开启子项目本地libs方法采样，默认为false
-        externalLibraries false //开启第三方libs方法采样，默认为false
-    }
-}
-
 bugly {
     appId = '5d8177ce84'
     appKey = 'ba5f4eb9-f262-4867-97d8-85cc08c12e2a'
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-
+    api fileTree(include: ['*.jar'], dir: 'libs')
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     //test
-    testApi rootProject.ext.dependencies.junit
-    androidTestApi rootProject.ext.dependencies.runner
-    androidTestApi rootProject.ext.dependencies.espresso
+    testImplementation rootProject.ext.dependencies.junit
+    androidTestImplementation rootProject.ext.dependencies.runner
+    androidTestImplementation rootProject.ext.dependencies.espresso
     //google
     api rootProject.ext.dependencies.constraint
-    api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:design:$rootProject.supportLibraryVersion"
+    api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+
     //log
     api "com.orhanobut:logger:$rootProject.loggerVersion"
     //router
     api "com.alibaba:arouter-api:$rootProject.arouterVersion"
     //LeakCanary
-    debugApi "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
-    releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
-    //BlockCanaryEx
-    debugApi "com.letv.sarrsdesktop:BlockCanaryExJRT:$rootProject.blockcanaryVersion"
-    releaseApi "com.letv.sarrsdesktop:BlockCanaryExJRTNoOp:$rootProject.blockcanaryVersion"
-    testApi "com.letv.sarrsdesktop:BlockCanaryExJRTNoOp:$rootProject.blockcanaryVersion"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
     //bugly
     api "com.tencent.bugly:crashreport:$rootProject.buglyVersion"
     api "com.tencent.bugly:nativecrashreport:$rootProject.buglyNativeVersion"
