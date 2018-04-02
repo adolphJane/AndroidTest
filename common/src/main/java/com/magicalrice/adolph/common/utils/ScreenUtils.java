@@ -51,8 +51,18 @@ public final class ScreenUtils {
      * @param dpValue
      * @return
      */
-    public static int dp2px(Context context,float dpValue) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dpValue,context.getResources().getDisplayMetrics());
+    public static float dp2px(Context context,float dpValue) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dpValue,context.getResources().getDisplayMetrics());
+    }
+
+    /**
+     * sp 转 px
+     * @param context
+     * @param dpValue
+     * @return
+     */
+    public static float sp2px(Context context,float dpValue) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,dpValue,context.getResources().getDisplayMetrics());
     }
 
     /**

@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="co_black1">#99000000</color>
-    <color name="co_black2">#FF000000</color>
-    <color name="co_white1">#FFFFFFFF</color>
+    //alpha
+    <color name="co_black_alpha_1">#99000000</color>
+    <color name="co_black_alpha_2">#FF000000</color>
+    <color name="co_white_alpha_1">#FFFFFFFF</color>
     <color name="co_transparent">#00000000</color>
-    <color name="co_gray1">#70FFFFFF</color>
+    <color name="co_gray_alpha_1">#70FFFFFF</color>
+
+    //not alpha
+    <color name="co_blue_1">#61a8b9</color>
 </resources>

@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.magicalrice.adolph.custom_view" >
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
-
+        <activity android:name=".testview.TestActivity"/>
+        <activity android:name=".circular_progress_bar.CircularProgressBarActivity"/>
     </application>
 </manifest>

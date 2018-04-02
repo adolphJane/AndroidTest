@@ -4,6 +4,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/cw_keyboard_enlarge"
     android:gravity="center"
-    android:textColor="@color/co_black2"
+    android:textColor="@color/co_black_alpha_2"
     android:textSize="24sp"
     android:textStyle="bold"/>

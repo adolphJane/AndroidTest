@@ -9,6 +9,9 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity android:name=".testview.TestActivity">
+        </activity>
+
+        <activity android:name=".circular_progress_bar.CircularProgressBarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

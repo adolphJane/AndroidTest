@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="cv_meizu_circular_progress_bar">
+        <attr name="cvRoundAngle" format="dimension|reference"/>
+        <attr name="cvStrokeWidth" format="dimension|reference"/>
+        <attr name="cvStrokeColor" format="color|reference"/>
+        <attr name="cvTextContent" format="string|reference"/>
+        <attr name="cvTextSize" format="dimension|reference"/>
+        <attr name="cvTextColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

@@ -53,7 +53,7 @@ dependencies {
     api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     api "com.android.support:design:$rootProject.supportLibraryVersion"
     api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-
+    api "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     //log
     api "com.orhanobut:logger:$rootProject.loggerVersion"
     //router
