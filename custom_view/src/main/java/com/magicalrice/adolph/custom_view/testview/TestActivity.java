@@ -5,7 +5,6 @@ import android.widget.Button;
 
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.custom_view.R;
-
 /**
  * Created by Adolph on 2018/3/28.
  */

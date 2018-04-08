@@ -39,7 +39,7 @@ public class TestView extends View {
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setAlpha(255);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.yurenj_0);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cv_yurenjie);
     }
 
     @Override

@@ -8,4 +8,11 @@
         <attr name="cvTextSize" format="dimension|reference"/>
         <attr name="cvTextColor" format="color|reference"/>
     </declare-styleable>
+
+    <declare-styleable name="cv_OptionLayout">
+        <attr name="cvOptionContent" format="string|reference"/>
+        <attr name="cvOptionStatus" format="integer"/>
+        <attr name="cvOptionContentColor" format="color|reference"/>
+        <attr name="cvOptionContentSize" format="dimension|reference"/>
+    </declare-styleable>
 </resources>

@@ -88,7 +88,7 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
 
     private void fixBackView(int value) {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) backView.getLayoutParams();
-        params.height = ScreenUtils.dp2px(mContext,value);
+        params.height = (int) ScreenUtils.dp2px(mContext,value);
         backView.setLayoutParams(params);
     }
 

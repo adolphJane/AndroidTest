@@ -36,8 +36,8 @@ public class SnakePanelView extends View {
     private int mGridSize = 20;
     private Paint mGridPaint;
     private Paint mStrokePaint;
-    private int mRectSize = ScreenUtils.dp2px(getContext(), 15);
-    private int mStartX, mStartY = ScreenUtils.dp2px(getContext(), 40);
+    private int mRectSize = (int) ScreenUtils.dp2px(getContext(), 15);
+    private int mStartX, mStartY = (int) ScreenUtils.dp2px(getContext(), 40);
 
     public SnakePanelView(Context context) {
         this(context, null);
