@@ -13,6 +13,9 @@
         <activity android:name=".notification.NotificationActivity"/>
 
         <activity android:name=".keyboard.example.KeyboardActivity">
+        </activity>
+
+        <activity android:name=".recyclerview.typeTwo.RecyclerviewTypeTwoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.custom_widget.recyclerview;
+package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
 
 import android.support.annotation.LayoutRes;
 

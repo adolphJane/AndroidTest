@@ -1,11 +1,9 @@
-package com.magicalrice.adolph.custom_widget.recyclerview;
+package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
 
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.magicalrice.adolph.custom_widget.recyclerview.adapter.SectionedRecyclerViewAdapter;
 
 /**
  * Created by Adolph on 2018/1/18.

@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.custom_widget.recyclerview.adapter;
+package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.magicalrice.adolph.custom_widget.recyclerview.Section;
+import com.magicalrice.adolph.custom_widget.recyclerview.typeOne.Section;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
