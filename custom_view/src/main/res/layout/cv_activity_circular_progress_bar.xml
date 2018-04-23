@@ -5,13 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.magicalrice.adolph.custom_view.circular_progress_bar.prototype_meizu.PrototypeMeizuCircularProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@color/co_white_alpha_1"
-        app:cvRoundAngle="10dp"
         app:cvStrokeWidth="3dp"
-        app:cvStrokeColor="@color/co_blue_1"
         app:cvTextContent="下载"
-        app:cvTextSize="20sp"/>
+        app:cvTextSize="18sp"/>
 </RelativeLayout>

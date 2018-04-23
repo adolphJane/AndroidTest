@@ -12,10 +12,6 @@
         </activity>
 
         <activity android:name=".circular_progress_bar.CircularProgressBarActivity">
-
-        </activity>
-
-        <activity android:name=".option_view.OptionLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -64,4 +64,11 @@ dependencies {
     //bugly
     api "com.tencent.bugly:crashreport:$rootProject.buglyVersion"
     api "com.tencent.bugly:nativecrashreport:$rootProject.buglyNativeVersion"
+    //debug_view
+    debugApi "com.sw.debug.view:debug-view:$rootProject.debugViewVersion"
+    releaseApi "com.sw.debug.view:debug-view-no-op:$rootProject.debugViewVersion"
+    testImplementation "com.sw.debug.view:debug-view-no-op:$rootProject.debugViewVersion"
+    //rxjava
+    api "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    api "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
 }

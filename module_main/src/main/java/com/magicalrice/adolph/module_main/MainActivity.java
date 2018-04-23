@@ -27,9 +27,12 @@ import com.magicalrice.adolph.common.bean.AndroidTestInfo;
 import com.magicalrice.adolph.common.widget.recyclerview.SectionParameters;
 import com.magicalrice.adolph.common.widget.recyclerview.SectionedRecyclerViewAdapter;
 import com.magicalrice.adolph.common.widget.recyclerview.StatelessSection;
+import com.sw.debug.view.modules.TimerModule;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import debug.MainApplication;
 
 /**
  * Created by Adolph on 2018/1/18.
@@ -117,6 +120,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             showLongToast(item.getTitle().toString());
         }
         return false;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            TimerModule.Companion.getInstance().begin(getApplicationContext());
+        }
     }
 
     private List<AndroidTestInfo> getCustomAnimationList() {

@@ -35,4 +35,7 @@ ext {
     leakcanaryVersion = '1.5.4'
     buglyVersion = '2.6.6'
     buglyNativeVersion = '3.3.1'
+    debugViewVersion = '1.0.2'
+    rxandroidVersion = '2.0.2'
+    rxjavaVersion = '2.1.12'
 }

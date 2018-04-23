@@ -1,6 +1,8 @@
 package com.magicalrice.adolph.common.base;
 
 import android.app.Application;
+import android.content.Context;
+import android.os.Build;
 
 import com.magicalrice.adolph.common.BuildConfig;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -8,6 +10,8 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.squareup.leakcanary.LeakCanary;
+import com.sw.debug.view.DebugViewWrapper;
+import com.sw.debug.view.modules.TimerModule;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy;
 
@@ -24,6 +28,7 @@ public class BaseApplication extends Application {
         initLogger();
         initLeakCanary();
         initBugly();
+        initDebugView();
     }
 
     private void initLogger() {
@@ -53,5 +58,23 @@ public class BaseApplication extends Application {
         strategy.setAppVersion(BuildConfig.VERSION_NAME);
         strategy.setAppPackageName(BuildConfig.APPLICATION_ID);
         CrashReport.initCrashReport(getApplicationContext(), "5d8177ce84", false);
+    }
+
+    private void initDebugView() {
+        DebugViewWrapper.Companion.getInstance().init(
+                new DebugViewWrapper.Builder(this)
+                    .viewWidth(250)
+                    .bgColor(0x6f677700)
+                    .alwaysShowOverlaySetting(true)
+                    .logMaxLines(20)
+        );
+
+        DebugViewWrapper.Companion.getInstance().show();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        TimerModule.Companion.getInstance().begin(base);
     }
 }

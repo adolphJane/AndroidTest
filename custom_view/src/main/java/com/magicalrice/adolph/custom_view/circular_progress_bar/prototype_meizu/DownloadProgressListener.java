@@ -5,4 +5,5 @@ package com.magicalrice.adolph.custom_view.circular_progress_bar.prototype_meizu
  */
 
 public interface DownloadProgressListener {
+    public void onProgressFinish();
 }

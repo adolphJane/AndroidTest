@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.magicalrice.adolph.common.R;
+import com.sw.debug.view.modules.TimerModule;
 
 /**
  * Created by Adolph on 2018/1/30.
@@ -36,6 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
+        TimerModule.Companion.getInstance().begin(getApplicationContext());
         setBase();
         AppManager.getInstance().addActivity(this);
         //initialize the ui
@@ -75,6 +77,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         saveInstanceState(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            TimerModule.Companion.getInstance().end(getApplicationContext());
+        }
     }
 
     protected void saveInstanceState(Bundle outState) {

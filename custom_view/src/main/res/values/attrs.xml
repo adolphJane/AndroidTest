@@ -3,16 +3,11 @@
     <declare-styleable name="cv_meizu_circular_progress_bar">
         <attr name="cvRoundAngle" format="dimension|reference"/>
         <attr name="cvStrokeWidth" format="dimension|reference"/>
-        <attr name="cvStrokeColor" format="color|reference"/>
+        <attr name="cvProgressColor" format="color|reference"/>
+        <attr name="cvDefColor" format="color|reference"/>
+        <attr name="cvPauseColor" format="color|reference"/>
         <attr name="cvTextContent" format="string|reference"/>
         <attr name="cvTextSize" format="dimension|reference"/>
         <attr name="cvTextColor" format="color|reference"/>
-    </declare-styleable>
-
-    <declare-styleable name="cv_OptionLayout">
-        <attr name="cvOptionContent" format="string|reference"/>
-        <attr name="cvOptionStatus" format="integer"/>
-        <attr name="cvOptionContentColor" format="color|reference"/>
-        <attr name="cvOptionContentSize" format="dimension|reference"/>
     </declare-styleable>
 </resources>
