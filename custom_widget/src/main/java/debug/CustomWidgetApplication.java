@@ -12,6 +12,6 @@ public class CustomWidgetApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        ApplicationUtils.init(this);
+
     }
 }
