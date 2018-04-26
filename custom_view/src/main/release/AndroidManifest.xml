@@ -3,6 +3,6 @@
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".testview.TestActivity"/>
         <activity android:name=".circular_progress_bar.CircularProgressBarActivity"/>
-        <activity android:name=".option_view.OptionLayoutActivity"/>
+        <activity android:name=".horizontal_scroll_tag.TagActivity"/>
     </application>
 </manifest>

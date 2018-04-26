@@ -15,7 +15,10 @@ public class RouterTable {
     public static final String ITEM_WIDGET_DRAGFLOAT = GROUP_WIDGET + "/dragfloat";
     public static final String ITEM_WIDGET_NOTIFICATION = GROUP_WIDGET + "/notification";
     public static final String ITEM_WIDGET_KEYBOARD = GROUP_WIDGET + "/keyboard";
+    public static final String ITEM_WIDGET_RECYCLERVIEW = GROUP_WIDGET + "/recyclerview";
     //View
+    public static final String ITEM_VIEW_PROGRESS_BAR = GROUP_VIEW + "/progressbar";
+    public static final String ITEM_VIEW_HORIZONTAL_SCROLL_TAG = GROUP_VIEW + "/scrolltag";
     //Animation
     //LibraryStudy
     public static String ITEM_LIBRARY_STUDY_APPBARLAYOUT = GROUP_LIBRARY_STUDY + "/appbarlayout";

@@ -9,4 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="38dp"
         android:layout_centerVertical="true"/>
+    <View
+        android:id="@+id/left_view"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cv_left_translucence"
+        android:layout_alignTop="@id/tag_layout"
+        android:layout_alignBottom="@id/tag_layout"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/right_view"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cv_right_translucence"
+        android:layout_alignTop="@id/tag_layout"
+        android:layout_alignBottom="@id/tag_layout"
+        android:layout_alignRight="@id/tag_layout"
+        android:visibility="gone"/>
+
 </RelativeLayout>

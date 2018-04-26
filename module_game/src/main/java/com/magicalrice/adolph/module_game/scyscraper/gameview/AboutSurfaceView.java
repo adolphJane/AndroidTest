@@ -9,8 +9,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.magicalrice.adolph.module_game.scyscraper.ScyScraperActivity;
-import com.magicalrice.test.game.skyscraper.MainActivity;
-import com.magicalrice.test.game.skyscraper.R;
 
 /**
  * Created by Adolph on 2018/1/21.

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -25,7 +24,6 @@ import java.util.List;
 
 public class HorizontalScrollTagLayout extends HorizontalScrollView {
     private ViewPager viewPager;
-    private List<String> tagList;
     private LinearLayout parentLayout;
     private int selectPosition = 0, lastPosition = -1;
     private onScrollSelectTagListener listener;
@@ -56,7 +54,6 @@ public class HorizontalScrollTagLayout extends HorizontalScrollView {
 
     public void setParam(ViewPager viewPager, List<String> tagList) {
         this.viewPager = viewPager;
-        this.tagList = tagList;
         initHeaderTag(tagList);
     }
 
@@ -76,9 +73,7 @@ public class HorizontalScrollTagLayout extends HorizontalScrollView {
             textView.setTextSize(14);
             textView.setTextColor(getResources().getColor(R.color.co_black_alpha_1));
             int finalI = i;
-            textView.setOnClickListener(v -> {
-                selectItem(finalI);
-            });
+            textView.setOnClickListener(v -> selectItem(finalI));
             parentLayout.addView(textView);
         }
         updateSelectItem();
@@ -131,6 +126,24 @@ public class HorizontalScrollTagLayout extends HorizontalScrollView {
             if (tv != null) {
                 tv.setTextColor(getResources().getColor(R.color.co_black_alpha_1));
                 tv.setTypeface(Typeface.DEFAULT);
+            }
+        }
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        L.e("horizontal:l%d,t%d,oldL%d,oldT",l,t,oldl,oldt);
+        if (listener != null) {
+            if (getScrollX() == 0) {
+                listener.onScrollTop(true);
+                listener.onScrollBottom(false);
+            } else if (getScrollX() + getWidth() - getPaddingLeft() - getPaddingRight() == getChildAt(0).getWidth()) {
+                listener.onScrollTop(false);
+                listener.onScrollBottom(true);
+            } else {
+                listener.onScrollTop(false);
+                listener.onScrollBottom(false);
             }
         }
     }

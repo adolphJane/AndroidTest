@@ -6,4 +6,6 @@ package com.magicalrice.adolph.custom_view.horizontal_scroll_tag;
 
 public interface onScrollSelectTagListener {
     void onSelectTag(int position);
+    void onScrollTop(boolean isTop);
+    void onScrollBottom(boolean isBottom);
 }

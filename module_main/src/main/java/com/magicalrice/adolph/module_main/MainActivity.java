@@ -32,8 +32,6 @@ import com.sw.debug.view.modules.TimerModule;
 import java.util.ArrayList;
 import java.util.List;
 
-import debug.MainApplication;
-
 /**
  * Created by Adolph on 2018/1/18.
  */
@@ -137,6 +135,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private List<AndroidTestInfo> getCustomViewList() {
         List<AndroidTestInfo> list = new ArrayList<>();
+        list.add(new AndroidTestInfo("圆形下载进度条","",RouterTable.ITEM_VIEW_PROGRESS_BAR));
+        list.add(new AndroidTestInfo("横向滚动标签栏","",RouterTable.ITEM_VIEW_HORIZONTAL_SCROLL_TAG));
         return list;
     }
 
@@ -145,6 +145,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         list.add(new AndroidTestInfo("应用内拖动悬浮按钮","",RouterTable.ITEM_WIDGET_DRAGFLOAT));
         list.add(new AndroidTestInfo("通知栏","",RouterTable.ITEM_WIDGET_NOTIFICATION));
         list.add(new AndroidTestInfo("自定义键盘","",RouterTable.ITEM_WIDGET_KEYBOARD));
+        list.add(new AndroidTestInfo("自定义Recyclerview","",RouterTable.ITEM_WIDGET_RECYCLERVIEW));
         return list;
     }
 

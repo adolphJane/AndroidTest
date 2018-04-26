@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.magicalrice.adolph.common.utils.L;
 import com.magicalrice.adolph.common.utils.ScreenUtils;
 import com.magicalrice.adolph.custom_view.R;
 
@@ -140,7 +141,7 @@ public class PrototypeMeizuCircularProgressBar extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokeWidth);
         RectF rectF = new RectF(-mRaidus,-mRaidus,mRaidus,mRaidus);
-        canvas.drawArc(rectF,0,mSweepAngle,false,mPaint);
+        canvas.drawArc(rectF,-90,mSweepAngle,false,mPaint);
     }
 
     private void onDrawRect() {
@@ -210,6 +211,7 @@ public class PrototypeMeizuCircularProgressBar extends View {
         if (curProgress < maxProgress) {
             BigDecimal decimal = new BigDecimal(curProgress).divide(new BigDecimal(maxProgress),2,BigDecimal.ROUND_HALF_DOWN).multiply(new BigDecimal(360));
             mSweepAngle = decimal.intValue();
+            L.e("progress%d,sweepAngle%d",curProgress,mSweepAngle);
         } else {
             mSweepAngle = 360;
         }

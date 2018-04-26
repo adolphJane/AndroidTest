@@ -12,13 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.magicalrice.adolph.common.base.BaseActivity;
+import com.magicalrice.adolph.common.base.RouterTable;
 import com.magicalrice.adolph.custom_widget.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+@Route(path = RouterTable.ITEM_WIDGET_RECYCLERVIEW)
 public class RecyclerviewTypeTwoActivity extends BaseActivity {
     /**服务器端一共多少条数据*/
     private static final int TOTAL_COUNTER = 64;

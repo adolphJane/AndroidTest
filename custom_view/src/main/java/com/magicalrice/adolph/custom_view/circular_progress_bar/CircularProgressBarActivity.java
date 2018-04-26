@@ -2,7 +2,9 @@ package com.magicalrice.adolph.custom_view.circular_progress_bar;
 
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.magicalrice.adolph.common.base.BaseActivity;
+import com.magicalrice.adolph.common.base.RouterTable;
 import com.magicalrice.adolph.custom_view.R;
 import com.magicalrice.adolph.custom_view.circular_progress_bar.prototype_meizu.PrototypeMeizuCircularProgressBar;
 
@@ -17,6 +19,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Adolph on 2018/3/29.
  */
 
+@Route(path = RouterTable.ITEM_VIEW_PROGRESS_BAR)
 public class CircularProgressBarActivity extends BaseActivity implements View.OnClickListener {
     private PrototypeMeizuCircularProgressBar bar;
     private Disposable disposable;
@@ -71,7 +74,7 @@ public class CircularProgressBarActivity extends BaseActivity implements View.On
                     if (aLong > 9) {
                         bar.onFinishProgress();
                     } else {
-                        bar.setProgress((int) (aLong + 10),100);
+                        bar.setProgress((int) (aLong * 10),100);
                     }
                 });
         bar.setListener(disposable::dispose);
