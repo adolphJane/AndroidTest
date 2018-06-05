@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="home_blue" tools:ignore="ResourceName">#3381e3</color>
+    <color name="home_divider" tools:ignore="ResourceName">#aaaaaa</color>
+    <color name="home_gold" tools:ignore="ResourceName">#fff000</color>
+    <color name="home_gray" tools:ignore="ResourceName">#cccccc</color>
+    <color name="home_gray_6" tools:ignore="ResourceName">#666666</color>
+    <color name="home_gray_8" tools:ignore="ResourceName">#888888</color>
+    <color name="home_gray_9" tools:ignore="ResourceName">#88999999</color>
+    <color name="home_gray_10" tools:ignore="ResourceName">#aa666666</color>
+    <color name="home_orange" tools:ignore="ResourceName">#FF6827</color>
+    <color name="home_orange_deep" tools:ignore="ResourceName">#ff5000</color>
+    <color name="home_orange_pink" tools:ignore="ResourceName">#FF9666</color>
+    <color name="home_red" tools:ignore="ResourceName">#fc3b3b</color>
+    <color name="home_text" tools:ignore="ResourceName">#333333</color>
+    <color name="home_white" tools:ignore="ResourceName">#ffffff</color>
+    <color name="home_black" tools:ignore="ResourceName">#000000</color>
+    <color name="home_black_2" tools:ignore="ResourceName">#222222</color>
+    <color name="home_black_4" tools:ignore="ResourceName">#444444</color>
+    <color name="home_black_5" tools:ignore="ResourceName">#555555</color>
+    <color name="yellow_top3" tools:ignore="ResourceName">#f9e4bb</color>
+    <color name="green_alpha80" tools:ignore="ResourceName">#aa24c128</color>
+    <color name="green_alpha40" tools:ignore="ResourceName">#3324c128</color>
+    <color name="red_deep" tools:ignore="ResourceName">#a52f2d</color>
+    <color name="red_deep40" tools:ignore="ResourceName">#33a52f2d</color>
+    <color name="translat" tools:ignore="ResourceName">#00000000</color>
+
+    <color name="pink" tools:ignore="ResourceName">#fe9dbd</color>
+    <color name="pink40" tools:ignore="ResourceName">#33fe9dbd</color>
+
+    <color name="home_orange40" tools:ignore="ResourceName">#33FF6827</color>
+    <color name="home_blue40" tools:ignore="ResourceName">#333381e3</color>
+
+    <color name="home_yellow" tools:ignore="ResourceName">#ffa31d</color>
+    <color name="home_yellow40" tools:ignore="ResourceName">#33ffa31d</color>
+
+    <color name="red_light" tools:ignore="ResourceName">#ff5000</color>
+    <color name="cornsilk">#FFF8DC</color>
+    <color name="saddlebrown" tools:ignore="ResourceName">#8B4513</color>
+
+    <color name="tran70_black" tools:ignore="ResourceName">#b2000000</color>
+    <color name="label_life" tools:ignore="ResourceName">#0096ff</color>
+</resources>

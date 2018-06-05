@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="w_keyboard_label">智能安全加密键盘</string>
+    <string name="w_keyboard_key1">"&#64;"</string>
+    <string name="w_keyboard_key2">"&#38;"</string>
+    <string name="w_keyboard_key3">\"</string>
+    <string name="w_keyboard_key4">"&#60;"</string>
+    <string name="w_keyboard_key5">"&#62;"</string>
+</resources>

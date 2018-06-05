@@ -28,7 +28,7 @@ public class LoadSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     }
 
     private void initBitmap() {
-        bgAbout = BitmapFactory.decodeResource(getResources(), R.drawable.gm_scyscraper_load);
+        bgAbout = BitmapFactory.decodeResource(getResources(), R.drawable.g_scyscraper_load);
     }
 
     private void drawB(Canvas canvas) {

@@ -1,7 +1,6 @@
 package com.magicalrice.adolph.module_game.snake;
 
 import android.view.View;
-import android.widget.Button;
 
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.module_game.R;
@@ -16,7 +15,7 @@ public class SnakeActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected int getContentViewId() {
-        return R.layout.gm_activity_snack;
+        return R.layout.g_activity_snack;
     }
 
     @Override

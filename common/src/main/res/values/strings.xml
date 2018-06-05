@@ -6,6 +6,7 @@
     <string name="co_custom_widget">自定义控件</string>
     <string name="co_library_study">第三方库学习</string>
     <string name="co_game">小游戏</string>
+    <string name="co_case">案例</string>
     <string name="co_main">Main组件</string>
 
 </resources>

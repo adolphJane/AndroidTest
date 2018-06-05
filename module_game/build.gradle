@@ -47,7 +47,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    resourcePrefix "gm_"
+    resourcePrefix "g_"
 }
 
 dependencies {

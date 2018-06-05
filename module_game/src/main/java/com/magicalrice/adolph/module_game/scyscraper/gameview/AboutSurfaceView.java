@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.magicalrice.adolph.module_game.R;
 import com.magicalrice.adolph.module_game.scyscraper.ScyScraperActivity;
 
 /**

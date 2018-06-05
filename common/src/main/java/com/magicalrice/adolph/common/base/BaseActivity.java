@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.magicalrice.adolph.base_utils.app_utils.AppManager;
 import com.magicalrice.adolph.common.R;
 import com.sw.debug.view.modules.TimerModule;
 
@@ -39,7 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getContentViewId());
         TimerModule.Companion.getInstance().begin(getApplicationContext());
         setBase();
-        AppManager.getInstance().addActivity(this);
         //initialize the ui
         initUI();
         //initialize the toolbar
@@ -137,7 +137,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getInstance().removeActivity(this);
     }
 
     public void fragmentReplace(int target, Fragment toFragment, boolean backStack) {

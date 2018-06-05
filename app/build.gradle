@@ -12,11 +12,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
-        externalNativeBuild {
-            cmake {
-                cppFlags "-std=c++14 -fexceptions"
-            }
-        }
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags "-std=c++14 -fexceptions"
+//            }
+//        }
     }
     buildTypes {
         release {
@@ -49,11 +49,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+//    }
 
     dataBinding {
         enabled = true
@@ -64,10 +64,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     if (!isMoudle.toBoolean()) {
-        implementation project(':custom_animation')
-        implementation project(':custom_view')
-        implementation project(':custom_widget')
+        implementation project(':module_animation')
+        implementation project(':module_view')
+        implementation project(':module_widget')
         implementation project(':module_library_study')
+        implementation project(':module_case')
         implementation project(':module_main')
     } else {
         implementation project(':common')

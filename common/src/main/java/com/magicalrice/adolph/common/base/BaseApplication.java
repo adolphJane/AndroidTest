@@ -2,10 +2,9 @@ package com.magicalrice.adolph.common.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Build;
 
+import com.magicalrice.adolph.base_utils.app_utils.AppManager;
 import com.magicalrice.adolph.common.BuildConfig;
-import com.magicalrice.adolph.common.utils.ApplicationUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
@@ -25,7 +24,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ApplicationUtils.init(this);
+        AppManager.getInstance().init(this);
         initLogger();
         initLeakCanary();
         initBugly();

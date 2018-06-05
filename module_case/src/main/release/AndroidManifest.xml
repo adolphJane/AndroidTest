@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.magicalrice.adolph.module_case" >
+    <application android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".view.OrderingActivity"/>
+    </application>
+</manifest>

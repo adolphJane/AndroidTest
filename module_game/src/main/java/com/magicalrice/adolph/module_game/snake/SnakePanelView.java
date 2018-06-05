@@ -10,8 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.magicalrice.adolph.common.utils.ScreenUtils;
-import com.orhanobut.logger.Logger;
+import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 
 import java.util.ArrayList;
 import java.util.List;

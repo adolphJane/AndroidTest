@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="v_meizu_circular_progress_bar">
+        <attr name="vRoundAngle" format="dimension|reference"/>
+        <attr name="vStrokeWidth" format="dimension|reference"/>
+        <attr name="vProgressColor" format="color|reference"/>
+        <attr name="vDefColor" format="color|reference"/>
+        <attr name="vPauseColor" format="color|reference"/>
+        <attr name="vTextContent" format="string|reference"/>
+        <attr name="vTextSize" format="dimension|reference"/>
+        <attr name="vTextColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

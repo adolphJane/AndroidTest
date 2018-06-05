@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.magicalrice.adolph.module_game.snake.SnakePanelView
+        android:id="@+id/snake_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="75dp"
+            android:layout_height="45dp"
+            android:background="@drawable/g_direction_btn_background"
+            android:text="START"
+            android:textColor="@color/co_white_alpha_1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="25dp">
+            <Button
+                android:id="@+id/btn_top"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:background="@drawable/g_direction_btn_background"
+                android:text="TOP"
+                android:textColor="@color/co_white_alpha_1"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:id="@+id/btn_left"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:background="@drawable/g_direction_btn_background"
+                android:text="LEFT"
+                android:textColor="@color/co_white_alpha_1"
+                android:layout_centerVertical="true" />
+
+            <Button
+                android:id="@+id/btn_right"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:background="@drawable/g_direction_btn_background"
+                android:text="RIGHT"
+                android:textColor="@color/co_white_alpha_1"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+
+            <Button
+                android:id="@+id/btn_bottom"
+                android:layout_width="75dp"
+                android:layout_height="45dp"
+                android:background="@drawable/g_direction_btn_background"
+                android:text="BOTTOM"
+                android:textColor="@color/co_white_alpha_1"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="40dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
