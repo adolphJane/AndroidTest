@@ -7,7 +7,7 @@
         android:allowBackup="true"
         android:label="@string/co_case"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".view.OrderingActivity">
+        <activity android:name=".OrderingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

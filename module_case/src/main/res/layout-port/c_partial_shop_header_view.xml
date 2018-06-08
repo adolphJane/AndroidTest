@@ -8,8 +8,7 @@
     <View
         android:id="@+id/view_shop_content_layout_header"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_alignParentTop="true"/>
+        android:layout_height="20dp" />
 
     <FrameLayout
         android:id="@+id/layout_name"
