@@ -67,11 +67,6 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
         return null;
     }
 
-    @Override
-    protected void setBase() {
-
-    }
-
     private void showNormalNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1");
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com"));

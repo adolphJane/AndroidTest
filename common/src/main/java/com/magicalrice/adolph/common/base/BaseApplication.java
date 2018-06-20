@@ -3,6 +3,7 @@ package com.magicalrice.adolph.common.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.magicalrice.adolph.base_utils.app_utils.AppManager;
 import com.magicalrice.adolph.common.BuildConfig;
 import com.orhanobut.logger.AndroidLogAdapter;

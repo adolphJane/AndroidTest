@@ -70,11 +70,6 @@ public class TagActivity extends BaseActivity implements onScrollSelectTagListen
     }
 
     @Override
-    protected void setBase() {
-
-    }
-
-    @Override
     public void onSelectTag(int position) {
 
     }

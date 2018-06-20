@@ -1,5 +1,7 @@
 package com.magicalrice.adolph.common.base;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,32 +22,24 @@ import com.sw.debug.view.modules.TimerModule;
  * Created by Adolph on 2018/1/30.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
 
     //the time of the last click
     private long mLastClickTime;
     //the interval between twice click
     public static final int CLICK_TIME = 500;
-
-    private boolean isShowToolbar = false;
-
     protected Toolbar toolbar;
-
     private Fragment currentFragment;
+    protected T binding;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getContentViewId());
+        binding = DataBindingUtil.setContentView(this, getContentViewId());
         TimerModule.Companion.getInstance().begin(getApplicationContext());
-        setBase();
         //initialize the ui
         initUI();
-        //initialize the toolbar
-        if (isShowToolbar) {
-            initToolbar();
-        }
         //initialize the data
         initData();
         //initialize the listener
@@ -54,14 +48,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getContentViewId();
 
-    protected void initToolbar(){
+    protected void initToolbar() {
         try {
             toolbar = findViewById(R.id.tool_bar);
             toolbar.setTitleTextColor(Color.WHITE);
             setSupportActionBar(toolbar);
         } catch (NullPointerException e) {
             e.printStackTrace();
-            isShowToolbar = false;
         }
     }
 
@@ -116,14 +109,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isShowToolbar() {
-        return isShowToolbar;
-    }
-
-    public void setShowToolbar(boolean showToolbar) {
-        isShowToolbar = showToolbar;
-    }
-
     protected String getStringMethod(int mStringRid) {
         return this.getResources().getString(mStringRid);
     }
@@ -131,8 +116,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected float getDemonIntegerMethod(int mDemonRid) {
         return this.getResources().getDimension(mDemonRid);
     }
-
-    protected abstract void setBase();
 
     @Override
     protected void onDestroy() {

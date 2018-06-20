@@ -49,11 +49,6 @@ public class CircularProgressBarActivity extends BaseActivity implements View.On
     }
 
     @Override
-    protected void setBase() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         if (disposable != null) {
             disposable.dispose();

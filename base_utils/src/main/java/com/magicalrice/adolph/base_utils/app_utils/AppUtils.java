@@ -580,6 +580,14 @@ public class AppUtils {
         return isSuccess;
     }
 
+    public static boolean checkCameraHardware(Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * 判断路径是否正常
      *

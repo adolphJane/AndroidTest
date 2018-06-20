@@ -41,11 +41,6 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    protected void setBase() {
-
-    }
-
-    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_test) {
             testView.start();

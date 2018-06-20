@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.module_case;
+package com.magicalrice.adolph.module_case.appbarscroll;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -7,6 +7,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
 
 import com.magicalrice.adolph.common.base.BaseActivity;
+import com.magicalrice.adolph.module_case.R;
 
 /**
  * Created by Adolph on 2018/6/5.
@@ -54,11 +55,6 @@ public class OrderingActivity extends BaseActivity implements OnAppBarListener{
     @Override
     protected String getDemoName() {
         return "订餐页面";
-    }
-
-    @Override
-    protected void setBase() {
-
     }
 
     private void initAppBar() {

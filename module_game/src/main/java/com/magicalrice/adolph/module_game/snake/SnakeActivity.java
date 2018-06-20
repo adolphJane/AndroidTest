@@ -48,11 +48,6 @@ public class SnakeActivity extends BaseActivity implements View.OnClickListener 
     }
 
     @Override
-    protected void setBase() {
-
-    }
-
-    @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_top) {
             snakeView.setSnakeDirection(GameType.TOP);

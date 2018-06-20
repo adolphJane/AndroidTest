@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.module_case;
+package com.magicalrice.adolph.module_case.appbarscroll;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
+import com.magicalrice.adolph.module_case.R;
 
 /**
  * Created by Adolph on 2018/6/6.

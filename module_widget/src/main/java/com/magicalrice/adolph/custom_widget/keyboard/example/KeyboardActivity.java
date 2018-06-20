@@ -2,8 +2,10 @@ package com.magicalrice.adolph.custom_widget.keyboard.example;
 
 import android.text.InputType;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.common.base.RouterTable;
 import com.magicalrice.adolph.custom_widget.R;
@@ -17,11 +19,7 @@ public class KeyboardActivity extends BaseActivity {
 
     private EditText edit;
     private KeyboardUtils utils;
-
-    @Override
-    protected void initToolbar() {
-        super.initToolbar();
-    }
+    private ImageView imgDoc;
 
     @Override
     protected int getContentViewId() {
@@ -30,9 +28,10 @@ public class KeyboardActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        isShowToolbar();
+        initToolbar();
         edit = findViewById(R.id.edit_input);
         edit.setInputType(InputType.TYPE_NULL);
+        imgDoc = findViewById(R.id.img_web);
     }
 
     @Override
@@ -43,15 +42,11 @@ public class KeyboardActivity extends BaseActivity {
     @Override
     protected void initListener() {
         edit.setOnClickListener(v -> utils.attachTo((EditText) v));
+        imgDoc.setOnClickListener(v -> ARouter.getInstance().build(RouterTable.ITEM_WEB_DOC).navigation(this));
     }
 
     @Override
     protected String getDemoName() {
         return null;
-    }
-
-    @Override
-    protected void setBase() {
-
     }
 }
