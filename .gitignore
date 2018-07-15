@@ -6,3 +6,6 @@
 /build
 /captures
 .externalNativeBuild
+custom_animation/build/*
+custom_view/build/*
+custom_widget/*
