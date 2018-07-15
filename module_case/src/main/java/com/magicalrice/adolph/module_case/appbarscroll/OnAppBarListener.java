@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.module_case;
+package com.magicalrice.adolph.module_case.appbarscroll;
 
 import android.support.annotation.IdRes;
 

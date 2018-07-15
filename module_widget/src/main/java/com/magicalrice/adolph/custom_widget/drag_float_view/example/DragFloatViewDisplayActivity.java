@@ -60,9 +60,4 @@ public class DragFloatViewDisplayActivity extends BaseActivity {
     protected String getDemoName() {
         return null;
     }
-
-    @Override
-    protected void setBase() {
-
-    }
 }

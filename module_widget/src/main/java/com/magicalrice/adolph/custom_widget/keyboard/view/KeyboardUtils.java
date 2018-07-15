@@ -42,7 +42,7 @@ public class KeyboardUtils implements View.OnClickListener {
 
             if (popWindow == null) {
                 view = LayoutInflater.from(mContext).inflate(R.layout.w_keyboard_popu,null);
-                popWindow = new Dialog(mContext,R.style.cw_keyboard_popupAnimation);
+                popWindow = new Dialog(mContext,R.style.w_keyboard_popupAnimation);
                 view.findViewById(R.id.keyboard_finish).setOnClickListener(this);
                 view.findViewById(R.id.keyboard_back_hide).setOnClickListener(this);
             }
@@ -50,7 +50,7 @@ public class KeyboardUtils implements View.OnClickListener {
             popWindow.setContentView(view);
             popWindow.setCanceledOnTouchOutside(true);
             Window window = popWindow.getWindow();
-            window.setWindowAnimations(R.style.cw_keyboard_popupAnimation);
+            window.setWindowAnimations(R.style.w_keyboard_popupAnimation);
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             window.setGravity(Gravity.BOTTOM | Gravity.FILL_HORIZONTAL);
             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);

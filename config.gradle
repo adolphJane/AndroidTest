@@ -16,3 +16,9 @@ ext {
             "constraint" : 'com.android.support.constraint:constraint-layout:1.1.0',
     ]
 }
+
+task cleanBuild(type:Delete) {
+    if (!isMoudle) {
+        delete rootProject.buildDir
+    }
+}

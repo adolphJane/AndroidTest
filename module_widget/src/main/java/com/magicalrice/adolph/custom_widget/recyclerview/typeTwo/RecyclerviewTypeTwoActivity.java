@@ -81,11 +81,6 @@ public class RecyclerviewTypeTwoActivity extends BaseActivity {
         return null;
     }
 
-    @Override
-    protected void setBase() {
-
-    }
-
     private void addItems(ArrayList<String> list) {
         mDataAdapter.addAll(list);
         mCurrentCounter += list.size();

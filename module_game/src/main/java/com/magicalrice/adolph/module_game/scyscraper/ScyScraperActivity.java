@@ -92,11 +92,6 @@ public class ScyScraperActivity extends BaseActivity{
     }
 
     @Override
-    protected void setBase() {
-
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         if (mySv != null) {

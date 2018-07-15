@@ -81,6 +81,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         adapter.addSection(new ExpandableTestSection("自定义控件",getCustomWidgetList()));
         adapter.addSection(new ExpandableTestSection("游戏",getGameList()));
         adapter.addSection(new ExpandableTestSection("第三方库学习",getLibraryStudyList()));
+        adapter.addSection(new ExpandableTestSection("实战案例",getCaseList()));
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -108,11 +109,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-    protected void setBase() {
-
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.test1) {
             showLongToast(item.getTitle().toString());
@@ -130,6 +126,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private List<AndroidTestInfo> getCustomAnimationList() {
         List<AndroidTestInfo> list = new ArrayList<>();
+        list.add(new AndroidTestInfo("LayoutTransition使用","",RouterTable.ITEM_ANIMARION_LAYOUT_TRANSITION));
         return list;
     }
 
@@ -137,6 +134,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         List<AndroidTestInfo> list = new ArrayList<>();
         list.add(new AndroidTestInfo("圆形下载进度条","",RouterTable.ITEM_VIEW_PROGRESS_BAR));
         list.add(new AndroidTestInfo("横向滚动标签栏","",RouterTable.ITEM_VIEW_HORIZONTAL_SCROLL_TAG));
+        list.add(new AndroidTestInfo("数据统计图","",RouterTable.ITEM_VIEW_DATA_GRAPH));
         return list;
     }
 
@@ -157,6 +155,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private List<AndroidTestInfo> getLibraryStudyList() {
         List<AndroidTestInfo> list = new ArrayList<>();
         list.add(new AndroidTestInfo("AppBarLayout&CollapsingToolbar组合使用","",RouterTable.ITEM_LIBRARY_STUDY_APPBARLAYOUT));
+        return list;
+    }
+
+    private List<AndroidTestInfo> getCaseList() {
+        List<AndroidTestInfo> list = new ArrayList<>();
         return list;
     }
 

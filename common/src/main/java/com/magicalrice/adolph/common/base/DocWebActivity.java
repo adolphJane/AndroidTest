@@ -3,14 +3,18 @@ package com.magicalrice.adolph.common.base;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.magicalrice.adolph.common.R;
+import com.magicalrice.adolph.common.databinding.CoActivityDocWebBinding;
 
 /**
  * Created by Adolph on 2018/2/2.
  */
 
-public class DocWebActivity extends BaseActivity {
-
+@Route(path = RouterTable.ITEM_WEB_DOC)
+public class DocWebActivity extends BaseActivity<CoActivityDocWebBinding> {
     private WebView webView;
     String url = "";
 
@@ -21,17 +25,17 @@ public class DocWebActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        webView = findViewById(R.id.web_view);
+        webView = binding.webView;
     }
 
     @Override
     protected void initData() {
-        url = getIntent().getStringExtra("doc");
+        url = getIntent().getStringExtra("path");
         initWebView();
     }
 
     private void initWebView() {
-
+        webView.loadUrl(url);
     }
 
     @Override
@@ -42,11 +46,6 @@ public class DocWebActivity extends BaseActivity {
     @Override
     protected String getDemoName() {
         return "DocWebView";
-    }
-
-    @Override
-    protected void setBase() {
-
     }
 
     @Override
