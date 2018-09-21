@@ -68,6 +68,7 @@ dependencies {
         implementation project(':module_view')
         implementation project(':module_widget')
         implementation project(':module_library_study')
+        implementation project(':module_game')
         implementation project(':module_case')
         implementation project(':module_main')
     } else {

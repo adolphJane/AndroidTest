@@ -2,13 +2,15 @@ package com.magicalrice.adolph.module_game.snake;
 
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.magicalrice.adolph.common.base.BaseActivity;
+import com.magicalrice.adolph.common.base.RouterTable;
 import com.magicalrice.adolph.module_game.R;
 
 /**
  * Created by Adolph on 2018/2/12.
  */
-
+@Route(path = RouterTable.ITEM_GAME_SNAKE,name = "贪吃蛇")
 public class SnakeActivity extends BaseActivity implements View.OnClickListener {
 
     private SnakePanelView snakeView;

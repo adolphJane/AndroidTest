@@ -4,6 +4,7 @@
         <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity"/>
         <activity android:name=".notification.NotificationActivity"/>
         <activity android:name=".keyboard.example.KeyboardActivity"/>
+        <activity android:name=".recyclerview.item_decoration.ItemDecorationActivity"/>
         <receiver android:name=".notification.NotificationBroadcast"
             android:enabled="true">
             <intent-filter>

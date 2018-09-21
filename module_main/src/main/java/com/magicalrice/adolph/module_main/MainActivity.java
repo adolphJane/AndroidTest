@@ -144,11 +144,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         list.add(new AndroidTestInfo("通知栏","",RouterTable.ITEM_WIDGET_NOTIFICATION));
         list.add(new AndroidTestInfo("自定义键盘","",RouterTable.ITEM_WIDGET_KEYBOARD));
         list.add(new AndroidTestInfo("自定义Recyclerview","",RouterTable.ITEM_WIDGET_RECYCLERVIEW));
+        list.add(new AndroidTestInfo("自定义ItemDecoration","",RouterTable.ITEM_WIDGET_RECYCLERVIEW_ITEMDECORATION));
         return list;
     }
 
     private List<AndroidTestInfo> getGameList() {
         List<AndroidTestInfo> list = new ArrayList<>();
+        list.add(new AndroidTestInfo("贪吃蛇","",RouterTable.ITEM_GAME_SNAKE));
         return list;
     }
 
