@@ -25,7 +25,7 @@ public class CircularProgressBarActivity extends BaseActivity implements View.On
     private Disposable disposable;
     @Override
     protected int getContentViewId() {
-        return R.layout.v_activity_circular_progress_bar;
+        return R.layout.activity_circular_progress_bar;
     }
 
     @Override

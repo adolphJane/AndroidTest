@@ -1,9 +1,10 @@
 package com.magicalrice.adolph.module_view.cloud_tag;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Adolph on 2018/4/23.

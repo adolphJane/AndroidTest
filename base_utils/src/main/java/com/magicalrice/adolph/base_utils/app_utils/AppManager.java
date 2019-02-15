@@ -4,10 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
 import java.util.Stack;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by Adolph on 2018/1/30.

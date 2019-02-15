@@ -6,11 +6,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
 
 import com.magicalrice.adolph.base_utils.app_utils.AppManager;
 
 import java.io.File;
+
+import androidx.core.content.FileProvider;
 
 /**
  * Created by Adolph on 2018/2/12.

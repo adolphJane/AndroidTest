@@ -2,17 +2,18 @@ package com.magicalrice.adolph.module_case.appbarscroll;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.view.ViewCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import com.magicalrice.adolph.module_case.R;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
 
 /**
  * Created by Adolph on 2018/6/6.

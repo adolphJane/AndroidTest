@@ -1,18 +1,18 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.item_decoration.header;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.magicalrice.adolph.common.base.BaseFragment;
 import com.magicalrice.adolph.custom_widget.R;
 import com.magicalrice.adolph.custom_widget.recyclerview.item_decoration.ItemDecorationAdapter;
 import com.magicalrice.adolph.custom_widget.recyclerview.item_decoration.SectionInfo;
-import com.magicalrice.adolph.custom_widget.recyclerview.item_decoration.timeline.TimeLineItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HeaderFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
@@ -21,7 +21,7 @@ public class HeaderFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.w_fragment_item_decoration;
+        return R.layout.fragment_item_decoration;
     }
 
     @Override

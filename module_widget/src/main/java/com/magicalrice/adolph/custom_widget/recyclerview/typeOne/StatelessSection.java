@@ -4,8 +4,9 @@ package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
  * Created by Adolph on 2018/1/26.
  */
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Abstract {@link Section} with no states.

@@ -10,7 +10,7 @@ public class ItemDecorationActivity extends BaseActivity{
 
     @Override
     protected int getContentViewId() {
-        return R.layout.w_activity_item_decoration;
+        return R.layout.activity_item_decoration;
     }
 
     @Override

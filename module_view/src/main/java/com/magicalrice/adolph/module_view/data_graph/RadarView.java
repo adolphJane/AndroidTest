@@ -8,13 +8,12 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.magicalrice.adolph.common.utils.L;
-
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Adolph on 2018/6/19.

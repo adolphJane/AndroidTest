@@ -23,7 +23,7 @@ public class KeyboardActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.w_activity_keyboard;
+        return R.layout.activity_keyboard;
     }
 
     @Override

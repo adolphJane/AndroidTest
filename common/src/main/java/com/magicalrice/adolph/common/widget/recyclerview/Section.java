@@ -1,9 +1,10 @@
 package com.magicalrice.adolph.common.widget.recyclerview;
 
-import android.support.annotation.LayoutRes;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Abstract Section to be used with {@link SectionedRecyclerViewAdapter}.

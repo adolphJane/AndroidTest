@@ -1,6 +1,6 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.typeTwo;
 
-import android.support.v7.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 public class HeaderSpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
 

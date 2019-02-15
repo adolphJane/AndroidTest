@@ -17,7 +17,7 @@ public class SnakeActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected int getContentViewId() {
-        return R.layout.g_activity_snack;
+        return R.layout.activity_snack;
     }
 
     @Override

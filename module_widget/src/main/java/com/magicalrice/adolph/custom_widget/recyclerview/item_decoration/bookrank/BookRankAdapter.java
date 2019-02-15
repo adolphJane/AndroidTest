@@ -1,7 +1,5 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.item_decoration.bookrank;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +9,9 @@ import android.widget.TextView;
 import com.magicalrice.adolph.custom_widget.R;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BookRankAdapter extends RecyclerView.Adapter<BookRankAdapter.BookRankHolder> {
 
@@ -24,7 +25,7 @@ public class BookRankAdapter extends RecyclerView.Adapter<BookRankAdapter.BookRa
     @NonNull
     @Override
     public BookRankHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_layout_item_itemdecoration_bookrank,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_itemdecoration_bookrank,parent,false);
         BookRankHolder holder = new BookRankHolder(view);
         return holder;
     }

@@ -1,68 +1,11 @@
-apply plugin: 'com.android.application'
+apply from: "${rootProject.rootDir}/common_config.gradle"
+project.ext.setAppDefaultConfig project
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
-    defaultConfig {
-        applicationId rootProject.ext.android.applicationId
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-
-//        externalNativeBuild {
-//            cmake {
-//                cppFlags "-std=c++14 -fexceptions"
-//            }
-//        }
-    }
-    buildTypes {
-        release {
-            //更改AndroidManifest.xml中预先定义好占位符信息
-            //manifestPlaceholders = [app_icon: "@drawable/icon"]
-            // 不显示Log
-            buildConfigField "boolean", "LEO_DEBUG", "false"
-            //是否zip对齐
-            zipAlignEnabled true
-            // 缩减resource文件
-            shrinkResources true
-            //Proguard
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            //给applicationId添加后缀 ".debug"
-            applicationIdSuffix ".debug"
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            zipAlignEnabled false
-            shrinkResources false
-            minifyEnabled false
-            debuggable true
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-//    externalNativeBuild {
-//        cmake {
-//            path "CMakeLists.txt"
-//        }
-//    }
-
-    dataBinding {
-        enabled = true
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     if (!isMoudle.toBoolean()) {
         implementation project(':module_animation')
         implementation project(':module_view')

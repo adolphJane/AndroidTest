@@ -11,19 +11,19 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import com.magicalrice.adolph.module_view.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Adolph on 2018/6/20.
@@ -166,21 +166,21 @@ public class HistogramView extends View {
         //需要绘制图标的个数
         List<Bitmap> list = new ArrayList<>();
         if (datas.get(curItemClick).isQuestionFlag()) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.v_process);
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_process);
             if (bitmap != null) {
                 list.add(setImageSize(bitmap, imgSize, imgSize));
             }
         }
 
         if (datas.get(curItemClick).isLiveFlag()) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.v_edit);
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_edit);
             if (bitmap != null) {
                 list.add(setImageSize(bitmap, imgSize, imgSize));
             }
         }
 
         if (datas.get(curItemClick).isVideoFlag()) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.v_favorite);
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_favorite);
             if (bitmap != null) {
                 list.add(setImageSize(bitmap, imgSize, imgSize));
             }

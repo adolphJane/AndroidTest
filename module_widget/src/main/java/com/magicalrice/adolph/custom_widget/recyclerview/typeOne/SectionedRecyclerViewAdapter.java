@@ -1,18 +1,17 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
 
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.VisibleForTesting;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.magicalrice.adolph.custom_widget.recyclerview.typeOne.Section;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Adolph on 2018/1/25.
@@ -73,7 +72,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     @VisibleForTesting
-    View inflate(@LayoutRes int layoutResourceId,ViewGroup group) {
+    View inflate(@LayoutRes int layoutResourceId, ViewGroup group) {
         return LayoutInflater.from(group.getContext()).inflate(layoutResourceId,group);
     }
 

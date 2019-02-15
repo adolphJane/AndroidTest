@@ -8,12 +8,13 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.magicalrice.adolph.base_utils.LogUtils;
 import com.magicalrice.adolph.module_view.R;
-import com.orhanobut.logger.Logger;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Adolph on 2018/3/28.
@@ -39,14 +40,14 @@ public class TestView extends View {
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setAlpha(255);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.v_yurenjie);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_yurenjie);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if (isStart) {
-            Logger.e(i+"test");
+            LogUtils.e(i+"test");
             canvas.save();
             Matrix matrix = new Matrix();
             scale = (getResources().getDisplayMetrics().widthPixels * 0.5f) / (bitmap.getWidth() + 0.00f);

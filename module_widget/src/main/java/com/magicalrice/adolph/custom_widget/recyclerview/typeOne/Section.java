@@ -1,9 +1,10 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
 
-import android.support.annotation.LayoutRes;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Adolph on 2018/1/18.
@@ -21,7 +22,8 @@ public abstract class Section {
     private boolean hasFooter = false;
 
     @LayoutRes private Integer headerResourceId;
-    @LayoutRes private Integer footerResourceId;
+    @LayoutRes
+    private Integer footerResourceId;
     @LayoutRes private Integer itemResourceId;
     @LayoutRes private Integer loadingResourceId;
     @LayoutRes private Integer failedResourceId;

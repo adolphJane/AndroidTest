@@ -1,0 +1,157 @@
+project.ext {
+    setAppDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.application'
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.description "app"
+            setAndroidConfig extension.android
+    }
+
+    setModuleDefaultConfig = {
+        extension ->
+            if (isMoudle.toBoolean()) {
+                extension.apply plugin: 'com.android.application'
+            } else {
+                extension.apply plugin: 'com.android.library'
+            }
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.description "module"
+            setModuleAndroidConfig extension.android
+
+            extension.android.sourceSets {
+                main {
+                    if (isMoudle.toBoolean()) {
+                        manifest.srcFile 'src/main/AndroidManifest.xml'
+                    } else {
+                        manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                        java {
+                            exclude 'debug/**'
+                        }
+                    }
+                }
+            }
+    }
+
+    setLibDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.library'
+            extension.apply plugin: 'kotlin-kapt'
+            extension.apply plugin: 'kotlin-android'
+            extension.apply plugin: 'kotlin-android-extensions'
+            extension.description "lib"
+            setLibAndroidConfig extension.android
+    }
+
+    setAndroidConfig = {
+        extension ->
+            extension.compileSdkVersion = rootProject.ext.android.compileSdkVersion
+            extension.buildToolsVersion = rootProject.ext.android.buildToolsVersion
+            extension.defaultConfig {
+                minSdkVersion rootProject.ext.android.minSdkVersion
+                targetSdkVersion rootProject.ext.android.targetSdkVersion
+                versionCode rootProject.ext.android.versionCode
+                versionName rootProject.ext.android.versionName
+
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+                kapt {
+                    arguments {
+                        arg("AROUTER_MODULE_NAME", project.getName())
+                    }
+                }
+            }
+
+            extension.buildTypes {
+                release {
+                    //更改AndroidManifest.xml中预先定义好占位符信息
+                    //manifestPlaceholders = [app_icon: "@drawable/icon"]
+                    // 不显示Log
+                    buildConfigField "boolean", "LEO_DEBUG", "false"
+                    //是否zip对齐
+                    zipAlignEnabled true
+                    // 缩减resource文件
+                    shrinkResources true
+                    //Proguard
+                    minifyEnabled true
+                    proguardFiles extension.getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
+
+                debug {
+                    //给applicationId添加后缀 ".debug"
+                    applicationIdSuffix ".debug"
+                    buildConfigField "boolean", "LOG_DEBUG", "true"
+                    zipAlignEnabled false
+                    shrinkResources false
+                    minifyEnabled false
+                    debuggable true
+                }
+            }
+
+            extension.dataBinding {
+                enabled = true
+            }
+
+            extension.compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+    }
+
+    setModuleAndroidConfig = {
+        extension ->
+            extension.compileSdkVersion = rootProject.ext.android.compileSdkVersion
+            extension.buildToolsVersion = rootProject.ext.android.buildToolsVersion
+            extension.defaultConfig {
+                minSdkVersion rootProject.ext.android.minSdkVersion
+                targetSdkVersion rootProject.ext.android.targetSdkVersion
+                versionCode rootProject.ext.android.versionCode
+                versionName rootProject.ext.android.versionName
+
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+                kapt {
+                    arguments {
+                        arg("AROUTER_MODULE_NAME", project.getName())
+                    }
+                }
+            }
+
+            extension.dataBinding {
+                enabled = true
+            }
+
+            extension.compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+    }
+
+    setLibAndroidConfig = {
+        extension ->
+            extension.compileSdkVersion = rootProject.ext.android.compileSdkVersion
+            extension.buildToolsVersion = rootProject.ext.android.buildToolsVersion
+            extension.defaultConfig {
+                minSdkVersion rootProject.ext.android.minSdkVersion
+                targetSdkVersion rootProject.ext.android.targetSdkVersion
+                versionCode rootProject.ext.android.versionCode
+                versionName rootProject.ext.android.versionName
+
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+                kapt {
+                    arguments {
+                        arg("AROUTER_MODULE_NAME", project.getName())
+                    }
+                }
+            }
+
+            extension.compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+    }
+}

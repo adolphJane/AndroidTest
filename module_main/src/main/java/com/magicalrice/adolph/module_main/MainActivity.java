@@ -1,14 +1,6 @@
 package com.magicalrice.adolph.module_main;
 
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -20,10 +12,12 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.navigation.NavigationView;
 import com.magicalrice.adolph.base_utils.app_utils.AppManager;
+import com.magicalrice.adolph.base_utils.bean.AndroidTestInfo;
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.common.base.RouterTable;
-import com.magicalrice.adolph.base_utils.bean.AndroidTestInfo;
 import com.magicalrice.adolph.common.widget.recyclerview.SectionParameters;
 import com.magicalrice.adolph.common.widget.recyclerview.SectionedRecyclerViewAdapter;
 import com.magicalrice.adolph.common.widget.recyclerview.StatelessSection;
@@ -31,6 +25,13 @@ import com.sw.debug.view.modules.TimerModule;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Adolph on 2018/1/18.
@@ -62,7 +63,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     protected int getContentViewId() {
-        return R.layout.main_activity;
+        return R.layout.activity_main;
     }
 
     @Override
@@ -173,8 +174,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         public ExpandableTestSection(String title, List<AndroidTestInfo> list) {
             super(SectionParameters.builder()
-                    .itemResourceId(R.layout.main_section_item_test)
-                    .headerResourceId(R.layout.main_section_header_test)
+                    .itemResourceId(R.layout.section_item_test)
+                    .headerResourceId(R.layout.section_header_test)
                     .build());
             this.title = title;
             this.list = list;

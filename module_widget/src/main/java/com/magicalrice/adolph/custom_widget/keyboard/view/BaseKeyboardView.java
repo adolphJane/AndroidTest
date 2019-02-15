@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.magicalrice.adolph.base_utils.LogUtils;
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import com.magicalrice.adolph.custom_widget.R;
-import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -42,9 +42,9 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
         mContext = context;
         parentView = view;
 
-        mNumberKeyboard = new Keyboard(mContext, R.xml.w_keyboard_numbers);
-        mLetterKeyboard = new Keyboard(mContext, R.xml.w_keyboard_word);
-        mSymbolKeyboard = new Keyboard(mContext, R.xml.w_keyboard_symbol);
+        mNumberKeyboard = new Keyboard(mContext, R.xml.keyboard_numbers);
+        mLetterKeyboard = new Keyboard(mContext, R.xml.keyboard_word);
+        mSymbolKeyboard = new Keyboard(mContext, R.xml.keyboard_symbol);
         mKeyView = parentView.findViewById(R.id.keyboard_view);
         mHeaderView = parentView.findViewById(R.id.keyboard_header);
         backView = parentView.findViewById(R.id.view_back);
@@ -166,7 +166,7 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
 
     @Override
     public void onPress(int primaryCode) {
-        Logger.d("onPress" + primaryCode);
+        LogUtils.d("onPress" + primaryCode);
         if (primaryCode == Keyboard.KEYCODE_SHIFT) {
             mKeyView.setPreviewEnabled(false);
         } else if (primaryCode == Keyboard.KEYCODE_DELETE) {
@@ -185,7 +185,7 @@ public class BaseKeyboardView implements KeyboardView.OnKeyboardActionListener{
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
-        Logger.d("onKey" + primaryCode);
+        LogUtils.d("onKey" + primaryCode);
         if (mEditText == null)
             return;
         Editable editable = mEditText.getText();

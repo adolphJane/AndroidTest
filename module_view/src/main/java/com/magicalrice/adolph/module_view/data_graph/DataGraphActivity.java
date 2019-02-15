@@ -18,7 +18,7 @@ public class DataGraphActivity extends BaseActivity {
     List<HistogramData> datas;
     @Override
     protected int getContentViewId() {
-        return R.layout.v_activity_data_graph;
+        return R.layout.activity_data_graph;
     }
 
     @Override

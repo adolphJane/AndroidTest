@@ -1,1 +1,1 @@
-include ':app', ':common', ':module_view', ':module_animation', ':module_widget', ':module_main', ':module_library_study', ':module_game', ':base_utils', ':module_case'
+include ':app', ':common', ':module_view', ':module_animation', ':module_widget', ':module_main', ':module_library_study', ':module_game', ':module_case',':base_utils' ,':base_libs' ,'base_models' ,'base_router' ,'base_tools'

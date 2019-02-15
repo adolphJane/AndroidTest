@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -12,11 +11,13 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.magicalrice.adolph.common.utils.L;
+import com.magicalrice.adolph.base_utils.LogUtils;
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import com.magicalrice.adolph.module_view.R;
 
 import java.util.List;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by Adolph on 2018/4/24.
@@ -110,10 +111,10 @@ public class HorizontalScrollTagLayout extends HorizontalScrollView {
                         position[0] = 0;
                     }
                     dx = position[0] - halfLayoutWidth + tv.getWidth() / 2;
-                    L.e("小位置%d,屏宽%d,tv宽度%d", position[0], halfLayoutWidth, tv.getWidth() / 2);
+                    LogUtils.e("小位置%d,屏宽%d,tv宽度%d", position[0], halfLayoutWidth, tv.getWidth() / 2);
                 } else {
                     dx = position[0] - halfLayoutWidth + tv.getWidth() / 2;
-                    L.e("大位置%d,屏宽%d,tv宽度%d", position[0], halfLayoutWidth, tv.getWidth() / 2);
+                    LogUtils.e("大位置%d,屏宽%d,tv宽度%d", position[0], halfLayoutWidth, tv.getWidth() / 2);
                 }
                 smoothScrollBy(dx, 0);
             }
@@ -133,7 +134,7 @@ public class HorizontalScrollTagLayout extends HorizontalScrollView {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        L.e("horizontal:l%d,t%d,oldL%d,oldT",l,t,oldl,oldt);
+        LogUtils.e("horizontal:l%d,t%d,oldL%d,oldT",l,t,oldl,oldt);
         if (listener != null) {
             if (getScrollX() == 0) {
                 listener.onScrollTop(true);

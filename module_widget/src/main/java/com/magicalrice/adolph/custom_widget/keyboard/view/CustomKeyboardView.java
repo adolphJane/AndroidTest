@@ -46,17 +46,17 @@ public class CustomKeyboardView extends KeyboardView {
         if (keys != null) {
             for (Key key : keys) {
                 if (key.codes[0] == -5) {
-                    drawKeyBackground(R.drawable.w_layerlist_keyboard_word_eng_del, canvas, key);
+                    drawKeyBackground(R.drawable.layerlist_keyboard_word_eng_del, canvas, key);
                 } else if (key.codes[0] == -35) {
-                    drawKeyBackground(R.drawable.w_layerlist_keyboard_word_num_del, canvas, key);
+                    drawKeyBackground(R.drawable.layerlist_keyboard_word_num_del, canvas, key);
                 } else if (key.codes[0] == -1) {
                     if (BaseKeyboardView.isUpper) {
-                        drawKeyBackground(R.drawable.w_layerlist_keyboard_word_shift_da, canvas, key);
+                        drawKeyBackground(R.drawable.layerlist_keyboard_word_shift_da, canvas, key);
                     } else {
-                        drawKeyBackground(R.drawable.w_layerlist_keyboard_word_shift, canvas, key);
+                        drawKeyBackground(R.drawable.layerlist_keyboard_word_shift, canvas, key);
                     }
                 } else if (key.codes[0] == -2 || key.codes[0] == 90001) {
-                    drawKeyBackground(R.drawable.w_selector_keyboard_bg, canvas, key);
+                    drawKeyBackground(R.drawable.selector_keyboard_bg, canvas, key);
                     drawText(canvas, key);
                 }
             }

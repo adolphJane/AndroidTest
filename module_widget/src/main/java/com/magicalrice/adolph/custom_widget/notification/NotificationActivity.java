@@ -9,9 +9,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -20,6 +17,10 @@ import android.widget.RemoteViews;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.custom_widget.R;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.view.ViewCompat;
 
 /**
  * Created by Adolph on 2018/2/9.
@@ -36,7 +37,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected int getContentViewId() {
-        return R.layout.w_activity_notification;
+        return R.layout.activity_notification;
     }
 
     @Override
@@ -169,7 +170,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
      */
     private void showCustomNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"3");
-        RemoteViews views = new RemoteViews(getPackageName(),R.layout.w_remoteview_notification);
+        RemoteViews views = new RemoteViews(getPackageName(),R.layout.remoteview_notification);
         Intent intentPlay = new Intent("play");
         PendingIntent pendingIntentPlay = PendingIntent.getBroadcast(this,0,intentPlay,0);
         Intent intentNext = new Intent("next");

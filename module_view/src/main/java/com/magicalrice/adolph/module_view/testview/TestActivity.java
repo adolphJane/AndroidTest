@@ -16,7 +16,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.v_activity_test;
+        return R.layout.activity_test;
     }
 
     @Override

@@ -8,7 +8,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Surface;
@@ -17,6 +16,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.magicalrice.adolph.base_utils.app_utils.AppManager;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by Adolph on 2018/2/12.

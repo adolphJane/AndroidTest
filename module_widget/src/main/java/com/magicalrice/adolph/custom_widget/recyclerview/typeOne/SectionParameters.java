@@ -1,6 +1,6 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.typeOne;
 
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * Created by Adolph on 2018/1/18.
@@ -9,7 +9,8 @@ import android.support.annotation.LayoutRes;
 public class SectionParameters {
     @LayoutRes public Integer headerResourceId;
     @LayoutRes public Integer footerResourceId;
-    @LayoutRes public Integer itemResourceId;
+    @LayoutRes
+    public Integer itemResourceId;
     @LayoutRes public Integer loadingResourceId;
     @LayoutRes public Integer failedResourceId;
     @LayoutRes public Integer emptyResourceId;

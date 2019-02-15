@@ -21,6 +21,6 @@ public class ItemHeader extends RelativeLayout {
     }
 
     private void init(Context context) {
-        inflate(context, R.layout.w_layout_header,this);
+        inflate(context, R.layout.layout_header,this);
     }
 }

@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -15,6 +14,8 @@ import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Adolph on 2018/2/12.

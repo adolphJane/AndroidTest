@@ -7,11 +7,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import com.magicalrice.adolph.custom_widget.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class FlagItemDecoration extends RecyclerView.ItemDecoration {
     private Paint mPaint;
@@ -23,7 +24,7 @@ public class FlagItemDecoration extends RecyclerView.ItemDecoration {
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.RED);
 
-        mIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.w_icon_hotsale);
+        mIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_hotsale);
         mFlagLeft = ScreenUtils.dp2px(context,60);
     }
 

@@ -7,11 +7,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
 import com.magicalrice.adolph.custom_widget.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
     private Paint mPaint;
@@ -29,7 +30,7 @@ public class TimeLineItemDecoration extends RecyclerView.ItemDecoration {
         mOffsetLeft = ScreenUtils.dp2px(context,32f);
         mNodeRadius = ScreenUtils.dp2px(context,8f);
 
-        mIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.w_icon_clock);
+        mIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_clock);
         mIcon = Bitmap.createScaledBitmap(mIcon,(int)mNodeRadius * 2,(int)mNodeRadius * 2,false);
     }
 

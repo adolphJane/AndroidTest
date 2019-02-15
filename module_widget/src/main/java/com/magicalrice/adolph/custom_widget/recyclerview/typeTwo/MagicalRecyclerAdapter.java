@@ -1,8 +1,5 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.typeTwo;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,6 +7,10 @@ import com.magicalrice.adolph.custom_widget.recyclerview.typeTwo.LoadingFooter.S
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public abstract class MagicalRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_HEADER_VIEW = Integer.MIN_VALUE;

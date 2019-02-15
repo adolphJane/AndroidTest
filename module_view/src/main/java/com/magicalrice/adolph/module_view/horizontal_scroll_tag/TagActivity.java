@@ -1,6 +1,5 @@
 package com.magicalrice.adolph.module_view.horizontal_scroll_tag;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -11,6 +10,8 @@ import com.magicalrice.adolph.module_view.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.viewpager.widget.ViewPager;
+
 /**
  * Created by Adolph on 2018/4/24.
  */
@@ -20,7 +21,7 @@ public class TagActivity extends BaseActivity implements onScrollSelectTagListen
     private View leftView,rightView;
     @Override
     protected int getContentViewId() {
-        return R.layout.v_activity_tag;
+        return R.layout.activity_tag;
     }
 
     @Override

@@ -1,14 +1,15 @@
 package com.magicalrice.adolph.module_library_study.appbarlayout_coordinatorlayout;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.CardView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.module_library_study.R;
+
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.ViewCompat;
 
 /**
  * Created by Adolph on 2018/2/2.
@@ -34,7 +35,7 @@ public class AppbarLayoutCoordinatorLayoutExampleActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.ls_activity_appbarlayout_coordinatorlayout;
+        return R.layout.activity_appbarlayout_coordinatorlayout;
     }
 
     @Override

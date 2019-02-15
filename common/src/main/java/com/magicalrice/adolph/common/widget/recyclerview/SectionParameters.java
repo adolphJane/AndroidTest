@@ -1,6 +1,6 @@
 package com.magicalrice.adolph.common.widget.recyclerview;
 
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * Class used as constructor parameters of {@link Section}.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="cTableShopDiscountTag">
+    <style name="TableShopDiscountTag">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">1dp</item>
@@ -10,7 +10,7 @@
         <item name="android:textSize">10sp</item>
     </style>
 
-    <style name="cTableShopDiscountContent">
+    <style name="TableShopDiscountContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/home_gray_6</item>
@@ -20,9 +20,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="cMediaController_SeekBar" parent="android:Widget.SeekBar">
-        <item name="android:progressDrawable">@drawable/cseekbar_progress_drawable</item>
-        <item name="android:indeterminateDrawable">@drawable/cseekbar_progress_drawable</item>
+    <style name="MediaController_SeekBar" parent="android:Widget.SeekBar">
+        <item name="android:progressDrawable">@drawable/seekbar_progress_drawable</item>
+        <item name="android:indeterminateDrawable">@drawable/seekbar_progress_drawable</item>
         <item name="android:minHeight">2dp</item>
         <item name="android:maxHeight">2dp</item>
         <item name="android:thumb">@drawable/btn_video_cursor_normal</item>

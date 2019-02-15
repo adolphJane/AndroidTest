@@ -7,16 +7,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.magicalrice.adolph.base_utils.LogUtils;
 import com.magicalrice.adolph.base_utils.utils.ScreenUtils;
-import com.magicalrice.adolph.common.utils.L;
+import com.magicalrice.adolph.module_view.R;
 
 import java.math.BigDecimal;
-import com.magicalrice.adolph.module_view.R;
+
+import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 
 /**
  * Created by Adolph on 2018/3/29.
@@ -60,15 +61,15 @@ public class PrototypeMeizuCircularProgressBar extends View {
     }
 
     private void initData(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs,R.styleable.v_meizu_circular_progress_bar);
-        mRoundC = a.getDimension(R.styleable.v_meizu_circular_progress_bar_vRoundAngle,ScreenUtils.dp2px(getContext(),30));
-        mTextContent = a.getString(R.styleable.v_meizu_circular_progress_bar_vTextContent);
-        mTextSize = a.getDimension(R.styleable.v_meizu_circular_progress_bar_vTextSize,ScreenUtils.sp2px(getContext(),18));
-        mTextColor = a.getColor(R.styleable.v_meizu_circular_progress_bar_vTextColor, Color.WHITE);
-        mProgressColor = a.getColor(R.styleable.v_meizu_circular_progress_bar_vProgressColor,Color.parseColor("#FF34A350"));
-        mDefColor = a.getColor(R.styleable.v_meizu_circular_progress_bar_vDefColor,Color.WHITE);
-        mPauseColor = a.getColor(R.styleable.v_meizu_circular_progress_bar_vPauseColor,Color.parseColor("#FF34A350"));
-        mStrokeWidth = a.getDimension(R.styleable.v_meizu_circular_progress_bar_vStrokeWidth,ScreenUtils.dp2px(getContext(),10));
+        TypedArray a = getContext().obtainStyledAttributes(attrs,R.styleable.meizu_circular_progress_bar);
+        mRoundC = a.getDimension(R.styleable.meizu_circular_progress_bar_RoundAngle,ScreenUtils.dp2px(getContext(),30));
+        mTextContent = a.getString(R.styleable.meizu_circular_progress_bar_TextContent);
+        mTextSize = a.getDimension(R.styleable.meizu_circular_progress_bar_TextSize,ScreenUtils.sp2px(getContext(),18));
+        mTextColor = a.getColor(R.styleable.meizu_circular_progress_bar_TextColor, Color.WHITE);
+        mProgressColor = a.getColor(R.styleable.meizu_circular_progress_bar_ProgressColor,Color.parseColor("#FF34A350"));
+        mDefColor = a.getColor(R.styleable.meizu_circular_progress_bar_DefColor,Color.WHITE);
+        mPauseColor = a.getColor(R.styleable.meizu_circular_progress_bar_PauseColor,Color.parseColor("#FF34A350"));
+        mStrokeWidth = a.getDimension(R.styleable.meizu_circular_progress_bar_StrokeWidth,ScreenUtils.dp2px(getContext(),10));
     }
 
     @Override
@@ -211,7 +212,7 @@ public class PrototypeMeizuCircularProgressBar extends View {
         if (curProgress < maxProgress) {
             BigDecimal decimal = new BigDecimal(curProgress).divide(new BigDecimal(maxProgress),2,BigDecimal.ROUND_HALF_DOWN).multiply(new BigDecimal(360));
             mSweepAngle = decimal.intValue();
-            L.e("progress%d,sweepAngle%d",curProgress,mSweepAngle);
+            LogUtils.e("progress%d,sweepAngle%d",curProgress,mSweepAngle);
         } else {
             mSweepAngle = 360;
         }

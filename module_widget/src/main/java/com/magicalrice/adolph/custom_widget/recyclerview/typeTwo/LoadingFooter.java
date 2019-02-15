@@ -1,7 +1,6 @@
 package com.magicalrice.adolph.custom_widget.recyclerview.typeTwo;
 
 import android.content.Context;
-import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewStub;
@@ -10,6 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.magicalrice.adolph.custom_widget.R;
+
+import androidx.annotation.IntDef;
 
 public class LoadingFooter extends RelativeLayout {
     public static final int NORMAL = 1;
@@ -44,7 +45,7 @@ public class LoadingFooter extends RelativeLayout {
     }
 
     private void init(Context context) {
-        inflate(context, R.layout.w_layout_list_footer, this);
+        inflate(context, R.layout.layout_list_footer, this);
         setOnClickListener(null);
         setState(NORMAL, true);
     }

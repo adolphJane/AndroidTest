@@ -1,7 +1,5 @@
 package com.magicalrice.adolph.module_case.camera;
 
-import android.content.Context;
-
 import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.module_case.R;
 
@@ -12,7 +10,7 @@ import com.magicalrice.adolph.module_case.R;
 public class CameraTestOneActivity extends BaseActivity {
     @Override
     protected int getContentViewId() {
-        return R.layout.c_activity_camera_one;
+        return R.layout.activity_camera_one;
     }
 
     @Override

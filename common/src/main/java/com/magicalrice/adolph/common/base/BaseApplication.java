@@ -3,13 +3,8 @@ package com.magicalrice.adolph.common.base;
 import android.app.Application;
 import android.content.Context;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.magicalrice.adolph.base_utils.app_utils.AppManager;
 import com.magicalrice.adolph.common.BuildConfig;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.FormatStrategy;
-import com.orhanobut.logger.Logger;
-import com.orhanobut.logger.PrettyFormatStrategy;
 import com.squareup.leakcanary.LeakCanary;
 import com.sw.debug.view.DebugViewWrapper;
 import com.sw.debug.view.modules.TimerModule;
@@ -33,18 +28,7 @@ public class BaseApplication extends Application {
     }
 
     private void initLogger() {
-        FormatStrategy strategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(false)
-                .methodCount(5)
-                .methodOffset(6)
-                .tag("AndroidTest:")
-                .build();
-        Logger.addLogAdapter(new AndroidLogAdapter(strategy) {
-            @Override
-            public boolean isLoggable(int priority, String tag) {
-                return true;
-            }
-        });
+
     }
 
     private void initLeakCanary() {

@@ -1,6 +1,5 @@
 package com.magicalrice.adolph.custom_widget.drag_float_view.example;
 
-import android.support.v4.view.ViewCompat;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -10,6 +9,8 @@ import com.magicalrice.adolph.common.base.BaseActivity;
 import com.magicalrice.adolph.custom_widget.R;
 import com.magicalrice.adolph.custom_widget.drag_float_view.view.MagicalFloatingDragView;
 import com.magicalrice.adolph.custom_widget.drag_float_view.view.MagicalFloatingDragView.Builder;
+
+import androidx.core.view.ViewCompat;
 
 /**
  * Created by Adolph on 2018/1/29.
@@ -26,7 +27,7 @@ public class DragFloatViewDisplayActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.w_activity_drag_floating_view;
+        return R.layout.activity_drag_floating_view;
     }
 
     @Override
