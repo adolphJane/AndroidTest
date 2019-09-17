@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magicalrice.adolph.custom_animation" >
+    package="com.magicalrice.animation" >
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".LayoutTransitionActivity"/>
     </application>

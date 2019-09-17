@@ -2,14 +2,13 @@ apply from: "${rootProject.rootDir}/common_config.gradle"
 project.ext.setLibDefaultConfig project
 
 android {
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //test
-    testImplementation rootProject.ext.support.junit
-    androidTestImplementation rootProject.ext.support.runner
-    androidTestImplementation rootProject.ext.support.espresso
+    api fileTree(include: ['*.jar'], dir: 'libs')
     //Support
     api rootProject.ext.support.material
     api rootProject.ext.support.support_v4
@@ -31,4 +30,8 @@ dependencies {
     api rootProject.ext.dependencies.rxlifecycle
     api rootProject.ext.dependencies.rxlifecycleAndroid
     api rootProject.ext.dependencies.rxlifecycleComponents
+    //leakcary
+    debugApi rootProject.ext.dependencies.leakcanary
+    //bugly
+    api rootProject.ext.dependencies.bugly
 }

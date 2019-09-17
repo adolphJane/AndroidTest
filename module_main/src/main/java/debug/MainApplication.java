@@ -1,10 +1,10 @@
 package debug;
 
-import com.magicalrice.adolph.common.base.BaseApplication;
+import com.magicalrice.common.base.BaseApplication;
 
 /**
  * Created by Adolph on 2018/2/8.
  */
 
-public class MainApplication extends BaseApplication{
+public class MainApplication extends BaseApplication {
 }

@@ -7,6 +7,7 @@ project.ext {
             extension.apply plugin: 'kotlin-android-extensions'
             extension.description "app"
             setAndroidConfig extension.android
+            setModuleDependencies extension.dependencies
     }
 
     setModuleDefaultConfig = {
@@ -21,6 +22,7 @@ project.ext {
             extension.apply plugin: 'kotlin-android-extensions'
             extension.description "module"
             setModuleAndroidConfig extension.android
+            setModuleDependencies extension.dependencies
 
             extension.android.sourceSets {
                 main {
@@ -44,6 +46,7 @@ project.ext {
             extension.apply plugin: 'kotlin-android-extensions'
             extension.description "lib"
             setLibAndroidConfig extension.android
+            setLibDependencies extension.dependencies
     }
 
     setAndroidConfig = {
@@ -55,6 +58,7 @@ project.ext {
                 targetSdkVersion rootProject.ext.android.targetSdkVersion
                 versionCode rootProject.ext.android.versionCode
                 versionName rootProject.ext.android.versionName
+                multiDexEnabled true
 
                 testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -70,7 +74,7 @@ project.ext {
                     //更改AndroidManifest.xml中预先定义好占位符信息
                     //manifestPlaceholders = [app_icon: "@drawable/icon"]
                     // 不显示Log
-                    buildConfigField "boolean", "LEO_DEBUG", "false"
+                    buildConfigField "boolean", "LOG_DEBUG", "false"
                     //是否zip对齐
                     zipAlignEnabled true
                     // 缩减resource文件
@@ -110,6 +114,7 @@ project.ext {
                 targetSdkVersion rootProject.ext.android.targetSdkVersion
                 versionCode rootProject.ext.android.versionCode
                 versionName rootProject.ext.android.versionName
+                multiDexEnabled true
 
                 testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -139,6 +144,7 @@ project.ext {
                 targetSdkVersion rootProject.ext.android.targetSdkVersion
                 versionCode rootProject.ext.android.versionCode
                 versionName rootProject.ext.android.versionName
+                multiDexEnabled true
 
                 testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -153,5 +159,21 @@ project.ext {
                 sourceCompatibility JavaVersion.VERSION_1_8
                 targetCompatibility JavaVersion.VERSION_1_8
             }
+    }
+
+    setModuleDependencies = {
+        extension ->
+            extension.testImplementation rootProject.ext.support.junit
+            extension.androidTestImplementation rootProject.ext.support.androidxJunit
+            extension.androidTestImplementation rootProject.ext.support.runner
+            extension.androidTestImplementation rootProject.ext.support.espresso
+    }
+
+    setLibDependencies = {
+        extension ->
+            extension.testImplementation rootProject.ext.support.junit
+            extension.androidTestImplementation rootProject.ext.support.androidxJunit
+            extension.androidTestImplementation rootProject.ext.support.runner
+            extension.androidTestImplementation rootProject.ext.support.espresso
     }
 }

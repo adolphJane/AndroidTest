@@ -2,8 +2,6 @@ apply from: "${rootProject.rootDir}/common_config.gradle"
 project.ext.setLibDefaultConfig project
 
 android {
-    resourcePrefix "co_"
-
     dataBinding {
         enabled = true
     }
@@ -17,11 +15,9 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
 
+    //arouter
+    api rootProject.ext.dependencies.arouter
     kapt rootProject.ext.dependencies.arouterCompiler
-
     //base
-    api project(':base_utils')
-    api project(':base_tools')
-    api project(':base_models')
-    api project(':base_router')
+    api project(':base_data')
 }

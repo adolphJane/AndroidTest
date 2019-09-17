@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magicalrice.adolph.module_game" >
+    package="com.magicalrice.game" >
     <application
         android:name="debug.GameApplication"
         android:icon="@mipmap/ic_launcher"

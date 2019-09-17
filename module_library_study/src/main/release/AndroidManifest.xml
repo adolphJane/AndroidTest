@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magicalrice.adolph.module_library_study" >
+    package="com.magicalrice.library_study" >
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".appbarlayout_coordinatorlayout.AppbarLayoutCoordinatorLayoutExampleActivity"/>
+        <activity android:name=".coordinatorlayout.CoordinatorLayoutActivity"/>
     </application>
 </manifest>

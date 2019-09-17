@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.magicalrice.adolph.module_view.horizontal_scroll_tag.HorizontalScrollTagLayout
+    <com.magicalrice.view.horizontal_scroll_tag.HorizontalScrollTagLayout
         android:id="@+id/tag_layout"
         android:layout_width="match_parent"
         android:layout_height="38dp"

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magicalrice.adolph.module_library_study" >
+    package="com.magicalrice.library_study" >
     <application
         android:name="debug.LibraryStudyApplication"
         android:icon="@mipmap/ic_launcher"
@@ -7,7 +7,7 @@
         android:allowBackup="true"
         android:label="@string/co_library_study"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".appbarlayout_coordinatorlayout.AppbarLayoutCoordinatorLayoutExampleActivity">
+        <activity android:name=".coordinatorlayout.CoordinatorLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

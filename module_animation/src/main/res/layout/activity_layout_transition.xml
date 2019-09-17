@@ -9,7 +9,7 @@
 
         <include
             android:id="@+id/header"
-            layout="@layout/co_layout_header" />
+            layout="@layout/layout_header" />
 
         <LinearLayout
             android:id="@+id/ll_container"
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            android:background="@drawable/co_shape_gray_10dp"
+            android:background="@drawable/shape_gray_10dp"
             android:text="Add View"
             android:textAllCaps="false"
             android:textSize="16sp"

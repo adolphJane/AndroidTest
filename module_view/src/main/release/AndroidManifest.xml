@@ -1,9 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magicalrice.adolph.module_view" >
+    package="com.magicalrice.view" >
     <application android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".testview.TestActivity"/>
         <activity android:name=".circular_progress_bar.CircularProgressBarActivity"/>
         <activity android:name=".horizontal_scroll_tag.TagActivity"/>
         <activity android:name=".data_graph.DataGraphActivity"/>
+        <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity"/>
+        <activity android:name=".notification.NotificationActivity"/>
+        <activity android:name=".keyboard.example.KeyboardActivity"/>
+        <activity android:name=".recyclerview.typeTwo.RecyclerviewTypeTwoActivity"/>
+        <activity android:name=".recyclerview.item_decoration.ItemDecorationActivity"/>
+        <receiver android:name=".notification.NotificationBroadcast"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="play"/>
+                <action android:name="pause"/>
+                <action android:name="next"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

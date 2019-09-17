@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.magicalrice.adolph.module_view.data_graph.RadarView
+    <com.magicalrice.view.data_graph.RadarView
         android:id="@+id/radarView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true" />
 
-    <com.magicalrice.adolph.module_view.data_graph.HistogramView
+    <com.magicalrice.view.data_graph.HistogramView
         android:id="@+id/hisView"
         android:layout_width="300dp"
         android:layout_height="200dp"

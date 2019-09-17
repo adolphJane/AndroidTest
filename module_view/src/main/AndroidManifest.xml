@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magicalrice.adolph.module_view" >
+    package="com.magicalrice.view" >
     <application
         android:name="debug.CustomViewApplication"
         android:icon="@mipmap/ic_launcher"
@@ -20,5 +20,32 @@
 
         <activity android:name=".horizontal_scroll_tag.TagActivity">
         </activity>
+        <activity android:name=".drag_float_view.example.DragFloatViewDisplayActivity">
+
+        </activity>
+        <activity android:name=".notification.NotificationActivity"/>
+
+        <activity android:name=".keyboard.example.KeyboardActivity">
+        </activity>
+
+        <activity android:name=".recyclerview.typeTwo.RecyclerviewTypeTwoActivity">
+
+        </activity>
+
+        <activity android:name=".recyclerview.item_decoration.ItemDecorationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".notification.NotificationBroadcast"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="play"/>
+                <action android:name="pause"/>
+                <action android:name="next"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
